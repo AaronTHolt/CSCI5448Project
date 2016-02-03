@@ -6,6 +6,7 @@ Class project for CSCI5448
 ## Team:
 * David Baird
 * Aaron Holt
+* Kyle Olsen
 
 ## Description:
 A game inspired by the 2D game asteroids brought into 3 dimensions.
@@ -14,10 +15,10 @@ A game inspired by the 2D game asteroids brought into 3 dimensions.
 C++ using OpenGL for graphics, Bullet physics for a physics engine and potentially the Qt Framework for OS interactions.
 
 ## Programming Languages:
-|Lanugage|David Baird|Aaron Holt  |
-|:-------|:---------:|:----------:|
-|C++     |Advanced   |Intermediate|
-|GLSL	   |Beginner   |Beginner	  |
+|Lanugage|David Baird|Aaron Holt  |Kyle Olsen |
+|:-------|:---------:|:----------:|:----------:|
+|C++     |Advanced   |Intermediate|Advanced   |
+|GLSL	   |Beginner   |Beginner	  |Beginner    |
 
 ## Functionality:
 * A ship model and polyhedron asteroids
