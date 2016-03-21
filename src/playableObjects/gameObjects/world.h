@@ -9,12 +9,13 @@
 
 class World{
  public:
-  void registerGameObject(GameObject go);
-  static World getWorld();
+  void registerGameObject(GameObject& go);
+  static World& getWorld();
+  static void destroy();
   void draw() const;
 
  private:
-  World* theWorld;
+  static World* theWorld = nullptr;
   Boundary boundary;
   Ship playerShip;
   std::vector<GameObject> spaceObjects;
