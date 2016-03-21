@@ -3,7 +3,7 @@
 
 #include "gameObject.h"
 
-class Asteroid{
+class Asteroid: public GameObject{
     private:
         int asteroidSize;
 

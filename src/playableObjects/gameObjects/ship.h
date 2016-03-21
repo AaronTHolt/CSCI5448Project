@@ -3,7 +3,7 @@
 
 #include "gameObject.h"
 
-class Ship{
+class Ship: public GameObject{
     private:
         Weapon defaultWeapon;
         Weapon auxiliaryWeapon;
