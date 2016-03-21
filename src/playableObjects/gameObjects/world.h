@@ -9,8 +9,9 @@
 
 class World{
  public:
-  void registerGameObject(GameObject go);
-  static World getWorld();
+  void registerGameObject(GameObject& go);
+  static World& getWorld();
+  static void destroy();
   void draw() const;
 
  private:
