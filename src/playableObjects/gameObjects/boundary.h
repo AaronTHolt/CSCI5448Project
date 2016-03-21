@@ -1,6 +1,9 @@
 #ifndef _BOUNDARY_H_
 #define _BOUNDARY_H_
 
+#include "gameObject.h"
+#include "../cubeSides.h"
+
 class Boundary : GameObject{
  public:
   Boundary();
@@ -11,10 +14,10 @@ class Boundary : GameObject{
  private:
   // The physics Object for the boundary to the play area
   PhysicsObject* physicsObject;
-  // Half lengths of the dimensions of the play area
-  double x;
-  double y;
-  double z;
+  // Cubes that make up the boundary
+  Cube* bounds[SIDES];
+
+  
   
 };
 
