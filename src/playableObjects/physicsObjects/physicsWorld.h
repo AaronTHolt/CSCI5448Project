@@ -1,7 +1,8 @@
 #ifndef _PHYSICS_WORLD_H_
 #define _PHYSICS_WORLD_H_
 
-#include "../gameObjects/GameObject"
+#include "../gameObjects/gameObject.h"
+#include "../gameObjects/shapes/GLDebugDrawer.h"
 
 class PhysicsWorld{
  public:
@@ -16,6 +17,8 @@ class PhysicsWorld{
   btBroadphaseInterface* pairCache;
   btConstraintSolver* solver;
   btCollisionWorld* world;
+
+  btIDebugDraw* debugDrawer;
 };
 
 #endif

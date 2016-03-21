@@ -11,6 +11,15 @@ PhysicsWorld::PhysicsWorld(){
   solver = new btSequentialImpulseConstraintSolver();
   
   world = new btDiscreteDynamicsWorld(collisionDispatcher,pairCache,solver,collisionConfiguration);
+
+  // Set the Debug Drawer if not set already
+  if(NULL == world->getDebugDrawer()){
+    debugDrawer = new GLDebugDrawer();
+    world->setDebugDrawer(debugDrawer);
+  }
+  // Set the Debug Drawer State
+  world->getDebugDrawer()->setDebugMode(btIDebugDraw::DBG_DrawWireframe);
+  
 }
 
 PhysicsWorld::~PhysicsWorld(){
@@ -19,6 +28,7 @@ PhysicsWorld::~PhysicsWorld(){
   delete pairCache;
   delete collisionDispatcher;
   delete collisionConfiguration;
+  delete debugDrawer;
 }
 
 void PhysicsWorld::registerGameObject(GameObject& obj){
