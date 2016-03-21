@@ -1,4 +1,5 @@
 #include "ship.h"
+#include "objectLoader/waveOBJ.h"
 
 Ship::Ship(){
     // F-16
@@ -11,6 +12,8 @@ Ship::Ship(){
     {
         Fatal("Error loading object\n"+err);
     }
+
+    //Is this necessary/in the right place?
     if (f16)
     {
         f16->color(1,1,0);
