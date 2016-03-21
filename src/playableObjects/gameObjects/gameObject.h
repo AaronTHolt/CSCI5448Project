@@ -8,6 +8,8 @@ class GameObject{
   
   virtual void draw() const = 0;
 
+  PhysicsObject& getPhysicsObject();
+
  private:
   PhysicsObject* physicsObject;
   
