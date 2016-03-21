@@ -14,7 +14,7 @@ class World{
   void draw() const;
 
  private:
-  World* theWorld;
+  static World* theWorld = nullptr;
   Boundary boundary;
   Ship playerShip;
   std::vector<GameObject> spaceObjects;

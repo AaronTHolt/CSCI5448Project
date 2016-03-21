@@ -1,15 +1,16 @@
 #include "world.h"
 
-World::World(){
-  theWorld = this;
-}
+World::World(){}
 
 void World::registerGameObject(GameObject go){
   physicsWorld.registerGameObject(go);
 }
 
 static World World::getWorld(){
-  return *this;
+  if(nullptr == theWorld){
+    theWorld = new World();
+  }
+  return *theWorld;
 }
 
 void World::draw() const{
