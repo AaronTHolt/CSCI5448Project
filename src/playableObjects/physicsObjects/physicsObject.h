@@ -8,6 +8,8 @@ class PhysicsObject{
   virtual void applyRotationPitch(bool pitchUp) = 0;
   virtual void applyRotationPitch(bool yawRight) = 0;
 
+  btRigidBody* getRigidBody();
+  
  private:
   btCollisionShape* collisionShape;
   btRigidBody* rigidBody;

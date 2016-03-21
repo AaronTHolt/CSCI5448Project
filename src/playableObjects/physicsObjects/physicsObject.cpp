@@ -1,3 +1,9 @@
+#include "physicsObject.h"
+
+btRigidBody* getRigidBody(){
+  return rigidBody;
+}
+
 btRigidBody* PhysicsObject::createRigidBody(btCollisionShape* shape, float mass, btVector3 pos, double ry){
   btVector3 localInertia(0,0,0);
   btTransform transform;
