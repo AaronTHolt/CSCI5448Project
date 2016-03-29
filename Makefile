@@ -5,11 +5,11 @@ EXE=main
 all: $(EXE)
 #  Link
 main: bullet
-	./src/qmake && make
+	cd src && qmake && make && cd ..
 
 #  Clean
 clean:
-	./src/make/clean
+	cd src && make clean && cd .. && rm -f Asteroids3D
 cleanall: clean cleanBullet
 
 # Clean and make
