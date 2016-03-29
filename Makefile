@@ -5,7 +5,7 @@ EXE=main
 all: $(EXE)
 #  Link
 main: bullet
-	cd src && qmake && make && cd ..
+	cd src && qmake Asteroids3D.pro && make && cd ..
 
 #  Clean
 clean:

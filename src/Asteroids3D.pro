@@ -32,23 +32,4 @@ INCLUDEPATH += $$BULLETPATH
 
 DEPENDPATH += BULLETDEPEND
 
-SOURCES += main.cpp\
-    mainwindow.cpp \
-    gamestate.cpp \
-    playablestate.cpp \
-    welcomestate.cpp \
-    gamestatecontext.cpp \
-    profileselectstate.cpp \
-    optionsstate.cpp \
-    levelselectstate.cpp \
-    statsstate.cpp
-
-HEADERS  += mainwindow.h \
-    gamestate.h \
-    playablestate.h \
-    welcomestate.h \
-    gamestatecontext.h \
-    profileselectstate.h \
-    optionsstate.h \
-    levelselectstate.h \
-    statsstate.h
+include(Sources.pro)

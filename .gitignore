@@ -4,6 +4,11 @@ Asteroids3D
 # Compiled Makefile
 Makefile
 
+# Build Dirs
+src/.obj
+src/.moc
+src/.ui
+
 # Compiled Object files
 *.slo
 *.lo
