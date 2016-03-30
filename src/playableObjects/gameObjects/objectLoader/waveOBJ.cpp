@@ -139,7 +139,7 @@ WaveOBJ::WaveOBJ(const char* file,const QString& path)
 
    //  Open file
    QFile f(path+file);
-   if (!f.open(QFile::ReadOnly|QFile::Text)) throw QString("Cannot open file ")+file;
+   if (!f.open(QFile::ReadOnly|QFile::Text)) throw QString("Cannot open file ")+path+file;
    QTextStream in(&f);
 
    //  Start new displaylist

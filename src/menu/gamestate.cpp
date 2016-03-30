@@ -1,6 +1,9 @@
 #include "gamestate.h"
 #include "../playableObjects/gameObjects/objectLoader/waveOBJ.h"
 
+#include <iostream>
+#include <QDebug>
+
 
 GameState::GameState(QGLWidget * context)
 {
@@ -73,7 +76,17 @@ void GameState::cube(float scale)
 
 void GameState::ship()
 {
-    WaveOBJ* f16=0;
-    f16 = new WaveOBJ("../resources/f-16/f-16.obj",":/");
+    WaveOBJ* f16 = 0;
+    try
+    {
+        f16 = new WaveOBJ("f-16.obj",":/");
+    }
+    catch (QString err)
+    {
+        // std::cout << "Error loading object\n" << err << std::endl;
+        // QMessageBox::critical(QString("Ex01opengl"),err);
+        qDebug() << err;
+        QApplication::quit();
+    }
     f16->display();
 }
