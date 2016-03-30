@@ -1,4 +1,6 @@
 #include "gamestate.h"
+#include "../playableObjects/gameObjects/objectLoader/waveOBJ.h"
+
 
 GameState::GameState(QGLWidget * context)
 {
@@ -68,3 +70,10 @@ void GameState::cube(float scale)
     glPopMatrix();
 }
 
+
+void GameState::ship()
+{
+    WaveOBJ* f16=0;
+    f16 = new WaveOBJ("../resources/f-16/f-16.obj",":/");
+    f16->display();
+}
