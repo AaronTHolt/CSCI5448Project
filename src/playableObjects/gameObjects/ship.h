@@ -2,21 +2,27 @@
 #define _SHIP_H_
 
 #include "gameObject.h"
+#include "objectLoader/waveOBJ.h"
 
 class Ship: public GameObject{
     private:
-        Weapon defaultWeapon;
-        Weapon auxiliaryWeapon;
-        Health health;
-
+    //     Weapon defaultWeapon;
+    //     Weapon auxiliaryWeapon;
+    //     Health health;
+        // void Fatal(QString message);            //  Error handler
+        WaveOBJ* f16;
     public:
-        void thrust();
-        void pitch(bool pitchUp);
-        void yaw(bool yawRight);
-        void fireDefaultWeapon();
-        void fireAuxiliaryWeapon();
+        Ship();
+        ~Ship();
 
-        void draw();
+        // void thrust();
+        // void pitch(bool pitchUp);
+        // void yaw(bool yawRight);
+        // void fireDefaultWeapon();
+        // void fireAuxiliaryWeapon();
+
+        void draw() const;
+        // void draw(WaveOBJ* ship);
 };
 
 
