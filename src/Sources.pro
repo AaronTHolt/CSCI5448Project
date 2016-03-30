@@ -52,3 +52,12 @@ SOURCES += playableObjects/physicsObjects/physicsWorld.cpp
 HEADERS += playableObjects/physicsObjects/boundaryPhysicsObject.h
 SOURCES += playableObjects/physicsObjects/boundaryPhysicsObject.cpp
 
+#Ship
+HEADERS += playableObjects/gameObjects/objectLoader/object.h
+SOURCES += playableObjects/gameObjects/objectLoader/object.cpp
+HEADERS += playableObjects/gameObjects/objectLoader/waveOBJ.h
+SOURCES += playableObjects/gameObjects/objectLoader/waveOBJ.cpp
+HEADERS += playableObjects/gameObjects/objectLoader/type.h
+
+HEADERS += playableObjects/gameObjects/ship.h
+SOURCES += playableObjects/gameObjects/ship.cpp
