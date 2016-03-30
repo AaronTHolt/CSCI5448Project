@@ -1,9 +1,10 @@
 // Drawer for debugging collision shapes
 
 #include "GLDebugDrawer.h"
-#include "bullet3-2.83.6/src/btBulletDynamicsCommon.h"
-#include "bullet3-2.83.6/src/LinearMath/btIDebugDraw.h"
+#include "btBulletDynamicsCommon.h"
+#include "LinearMath/btIDebugDraw.h"
 #include <cstdio>
+#include <QGLWidget>
 
 GLDebugDrawer::GLDebugDrawer() : m_debugMode(0) { }
 

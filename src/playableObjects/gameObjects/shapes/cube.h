@@ -24,7 +24,7 @@ class Cube
   void translate(float x, float y, float z); //  Set location
   void rotate(float th);                     //  Set rotation
   void scale(float dx,float dy,float dz);    //  Set scale
-  void draw(float x, float y, float z);      //  Render the cube
+  void draw();      //  Render the cube
 };
 
 #endif

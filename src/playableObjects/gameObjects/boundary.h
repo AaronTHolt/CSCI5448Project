@@ -2,7 +2,8 @@
 #define _BOUNDARY_H_
 
 #include "gameObject.h"
-#include "../cubeSides.h"
+#include "cube.h"
+#include "cubeSides.h"
 
 class Boundary : GameObject{
  public:
@@ -12,12 +13,8 @@ class Boundary : GameObject{
   void draw() const;
 
  private:
-  // The physics Object for the boundary to the play area
-  PhysicsObject* physicsObject;
   // Cubes that make up the boundary
-  Cube* bounds[SIDES];
-
-  
+  Cube* bounds[NUMSIDES];
   
 };
 

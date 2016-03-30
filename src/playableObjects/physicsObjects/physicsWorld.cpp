@@ -31,6 +31,6 @@ PhysicsWorld::~PhysicsWorld(){
   delete debugDrawer;
 }
 
-void PhysicsWorld::registerGameObject(GameObject& obj){
-  world->addRigidBody(obj.getPhysicsObject().getRigidBody());
+void PhysicsWorld::registerGameObject(GameObject* obj){
+  world->addCollisionObject(obj->getPhysicsObject().getRigidBody());
 }

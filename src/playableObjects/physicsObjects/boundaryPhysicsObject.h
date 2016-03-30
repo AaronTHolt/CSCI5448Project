@@ -2,7 +2,7 @@
 #define _BOUNDARY_PHYSICS_OBJECT_H_
 
 #include "physicsObject.h"
-#include "../cubeSides.h"
+#include "cubeSides.h"
 
 
 class BoundaryPhysicsObject: public PhysicsObject{

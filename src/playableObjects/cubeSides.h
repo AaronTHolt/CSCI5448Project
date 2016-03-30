@@ -3,7 +3,7 @@
 
 #define NUMSIDES 6
 
-enum class CubeSides: unsigned int{
+enum class CubeSides: int{
     Top    = 0,
     Bottom = 1,
     Left   = 2,
@@ -11,5 +11,7 @@ enum class CubeSides: unsigned int{
     Front  = 4,
     Back   = 5,
 };
+
+int operator+(const CubeSides& c);
 
 #endif

@@ -1,6 +1,7 @@
 #include "physicsObject.h"
 
-btRigidBody* getRigidBody(){
+
+btRigidBody* PhysicsObject::getRigidBody(){
   return rigidBody;
 }
 
@@ -14,4 +15,11 @@ btRigidBody* PhysicsObject::createRigidBody(btCollisionShape* shape, float mass,
   btDefaultMotionState* myMotionState = new btDefaultMotionState(transform);
   btRigidBody::btRigidBodyConstructionInfo rbInfo(mass,myMotionState,shape,localInertia);
   return new btRigidBody(rbInfo);
+}
+
+// PhysicsObject Destructor
+//  This deletes the rigid body and collisionShape
+PhysicsObject::~PhysicsObject(){
+  delete rigidBody;
+  delete collisionShape;
 }

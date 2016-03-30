@@ -9,7 +9,8 @@ main: bullet
 
 #  Clean
 clean:
-	cd src && make clean && cd .. && rm -f Asteroids3D
+	cd src && make clean && cd ..
+	rm -f Asteroids3D src/bulletLibs.pro
 cleanall: clean cleanBullet
 
 # Clean and make

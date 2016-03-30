@@ -4,6 +4,9 @@ Asteroids3D
 # Compiled Makefile
 Makefile
 
+# Compile Pro file
+src/bulletLibs.pro
+
 # Build Dirs
 src/.obj
 src/.moc

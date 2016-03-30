@@ -1,8 +1,8 @@
 #ifndef _GL_DEBUG_DRAWER_H_
 #define _GL_DEBUG_DRAWER_H_
 
-#include "bullet3-2.83.6/src/btBulletDynamicsCommon.h"
-#include "bullet3-2.83.6/src/LinearMath/btIDebugDraw.h"
+#include "btBulletDynamicsCommon.h"
+#include "LinearMath/btIDebugDraw.h"
 
 class GLDebugDrawer : public btIDebugDraw
 {

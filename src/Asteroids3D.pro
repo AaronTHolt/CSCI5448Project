@@ -20,15 +20,13 @@ CONFIG += c++11
 TEMPLATE = app
 
 BULLETPATH += $$system(ls -d ../bullet*)
-BULLETDEPEND = $$system(find $$BULLETPATH/bin -iname libBulletDynamics*)
-BULLETDEPEND += $$system(find $$BULLETPATH/bin -iname libBullet3Common*)
-BULLETDEPEND += $$system(find $$BULLETPATH/bin -iname libBulletCollision*)
-BULLETDEPEND += $$system(find $$BULLETPATH/bin -iname libLinearMath*)                
+LIBS += -L$$BULLETPATH/bin
+include(bulletLibs.pro)
 
 message(The BULLETPATH = ($$BULLETDEPEND))
               
 INCLUDEPATH += $$system(find . -type d)
-INCLUDEPATH += $$BULLETPATH
+INCLUDEPATH += $$BULLETPATH $$BULLETPATH/src
 
 DEPENDPATH += BULLETDEPEND
 

@@ -1,65 +1,66 @@
 #include "boundaryPhysicsObject.h"
+
 #include "invalidOperationException.h"
+
+#include "btBulletDynamicsCommon.h"
+#include "LinearMath/btTransform.h"
 
 BoundaryPhysicsObject::BoundaryPhysicsObject(float x, float y, float z){
   // Create the compound shape which represents the whole boundary
-  collisionShape = new btCompoundShape();
+  btCompoundShape* compoundShape = new btCompoundShape();
   // Create the subshapes that are each side that comprise the whole boundary
-  subShapes[Top] = new btBoxShape(1.0, y, z);
-  subShapes[Bottom] = new btBoxShpae(1.0, y, z);
-  subShapes[Left] = new btBoxShape(x, 1.0, z);
-  subShapes[Right] = new btBoxShape(x, 1.0, z);
-  subShapes[Front] = new btBoxShape(x, y, 1.0);
-  subShapes[Back] = new btBoxShape(x, y, 1.0);
+  subShapes[+CubeSides::Top] = new btBoxShape(btVector3(1.0, y, z));
+  subShapes[+CubeSides::Bottom] = new btBoxShape(btVector3(1.0, y, z));
+  subShapes[+CubeSides::Left] = new btBoxShape(btVector3(x, 1.0, z));
+  subShapes[+CubeSides::Right] = new btBoxShape(btVector3(x, 1.0, z));
+  subShapes[+CubeSides::Front] = new btBoxShape(btVector3(x, y, 1.0));
+  subShapes[+CubeSides::Back] = new btBoxShape(btVector3(x, y, 1.0));
 
   // Attach each subShape to the whole boundary
-  btTransform transform(); // The transformation to where each shape goes in space
+  btTransform transform; // The transformation to where each shape goes in space
   // Top
   transform.setOrigin(btVector3(0,y,0));
-  collisionShape->addChildShape(transform, subShape(Top));
+  compoundShape->addChildShape(transform, subShapes[+CubeSides::Top]);
   // Bottom
   transform.setOrigin(btVector3(0,-y,0));
-  collisionShape->addChildShape(transform, subShape(Bottom));
+  compoundShape->addChildShape(transform, subShapes[+CubeSides::Bottom]);
   // Left
   transform.setOrigin(btVector3(-x,0,0));
-  collisionShape->addChildShape(transform, subShape(Left));
+  compoundShape->addChildShape(transform, subShapes[+CubeSides::Left]);
   // Right
   transform.setOrigin(btVector3(x,0,0));
-  collisionShape->addChildShape(transform, subShape(Right));
+  compoundShape->addChildShape(transform, subShapes[+CubeSides::Right]);
   // Front
   transform.setOrigin(btVector3(0,0,z));
-  collisionShape->addChildShape(transform, subShape(Front));
+  compoundShape->addChildShape(transform, subShapes[+CubeSides::Front]);
   // Back
   transform.setOrigin(btVector3(0,0,-z));
-  collisionShape->addChildShape(transform, subShape(Back));
+  compoundShape->addChildShape(transform, subShapes[+CubeSides::Back]);
 
+  collisionShape = compoundShape;
   rigidBody = createRigidBody(collisionShape, 0.0f, btVector3(0,0,0), 0);
 }
 
 BoundaryPhysicsObject::~BoundaryPhysicsObject(){
+  // Rigid Body and Collision Shape are deleted by PhysicsObject
+
   // Delete each of the sub shapes
-  delete subShapes[Top];
-  delete subShapes[Bottom];
-  delete subShapes[Left];
-  delete subShapes[Right];
-  delete subShapes[Front];
-  delete subShapes[Back];
-
-  // Delete the compound Shape
-  delete collisionShape;
-
-  // Delete the rigid body
-  delete rigidBody;
+  delete subShapes[+CubeSides::Top];
+  delete subShapes[+CubeSides::Bottom];
+  delete subShapes[+CubeSides::Left];
+  delete subShapes[+CubeSides::Right];
+  delete subShapes[+CubeSides::Front];
+  delete subShapes[+CubeSides::Back];
 }
 
-BoundaryPhysicsObject::applyForce(){
+void BoundaryPhysicsObject::applyForce(){
   throw new InvalidOperationException();
 }
 
-BoundaryPhysicsObject::applyRotationPitch(bool isPitchUp){
+void BoundaryPhysicsObject::applyRotationPitch(bool isPitchUp){
   throw new InvalidOperationException();
 }
 
-BoundaryPhysicsObject::applyRotationYaw(bool isYawRight){
+void BoundaryPhysicsObject::applyRotationYaw(bool isYawRight){
   throw new InvalidOperationException();
 }

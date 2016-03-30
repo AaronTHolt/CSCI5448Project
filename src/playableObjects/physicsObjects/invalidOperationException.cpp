@@ -9,10 +9,10 @@ InvalidOperationException::~InvalidOperationException(){
 }
 
 std::exception& InvalidOperationException::operator=(const std::exception e){
-  message = string(e.what());
+  message = std::string(e.what());
   return *this;
 }
 
-const char* InvalidOperationException::what() const{
+const char* InvalidOperationException::what() const noexcept{
   return message.c_str();
 }

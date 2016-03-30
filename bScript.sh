@@ -18,3 +18,13 @@ else
     make
     cd ../../..
 fi
+
+if [ -e "./src/bulletLibs.pro" ]
+then
+    echo "Already have the Bullet Libs qmake file"
+else
+    cd bullet3-2.83.6/bin
+    for elt in $(cat ../../libsForBullet.txt); do
+	echo "LIBS += $(pwd)/$(ls $elt*)" >> ../../src/bulletLibs.pro
+    done
+fi

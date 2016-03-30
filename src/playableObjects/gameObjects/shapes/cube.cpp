@@ -6,8 +6,9 @@
 //  CSCI4239/5239 Spring 2016
 //
 
-#include "Cube.h"
+#include "cube.h"
 
+#include <QGLWidget>
 //
 //  Constructor
 //

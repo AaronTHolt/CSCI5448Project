@@ -9,7 +9,7 @@ class PhysicsWorld{
   PhysicsWorld();
   ~PhysicsWorld();
   
-  void registerGameObject(GameObject& obj);
+  void registerGameObject(GameObject* obj);
 
  private:
   btCollisionConfiguration* collisionConfiguration;

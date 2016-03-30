@@ -10,7 +10,7 @@ class InvalidOperationException : std::exception{
   ~InvalidOperationException();
   std::exception& operator=(const std::exception e);
 
-  const char* what() const;
+  const char* what() const noexcept;
 
  private:
   std::string message;

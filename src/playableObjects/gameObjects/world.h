@@ -5,21 +5,31 @@
 
 #include "gameObject.h"
 #include "physicsWorld.h"
-#include "ship.h"
+#include "boundary.h"
+//#include "ship.h"
 
 class World{
  public:
-  void registerGameObject(GameObject& go);
+  void registerGameObject(GameObject* go);
   static World& getWorld();
   static void destroy();
   void draw() const;
 
+  ~World();
+  
+  World(const World&) = delete;
+  void operator=(const World&) = delete;
+  
+  
  private:
-  static World* theWorld = nullptr;
   Boundary boundary;
-  Ship playerShip;
-  std::vector<GameObject> spaceObjects;
+  //Ship playerShip;
+  std::vector<GameObject*> spaceObjects;
   PhysicsWorld physicsWorld;
+
+  // Private constuctors and Assignment
+  World(){};
+    
 };
 
 #endif
