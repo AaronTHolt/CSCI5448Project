@@ -80,6 +80,8 @@ void GameState::ship()
     try
     {
         f16 = new WaveOBJ("f-16.obj",":/");
+        // f16 = new WaveOBJ("/home/aaron/Documents/CSCI5448Project/resources/f-16/f-16.obj","");
+        // /home/aaron/Documents/CSCI5448Project
     }
     catch (QString err)
     {
