@@ -137,9 +137,21 @@ WaveOBJ::WaveOBJ(const char* file,const QString& path)
    //  Initialize scale
    sr = 1;
 
+   // QFile ff(path+file);
+   // if (!ff.exists()) {
+   //  // react
+   //    throw QString("File ff does not exist ")+path+file;
+   // }
+
+   // QFile fff(file);
+   // if (!fff.exists()) {
+   //  // react
+   //    throw QString("File fff does not exist ")+file;
+   // }
+
    //  Open file
    QFile f(path+file);
-   if (!f.open(QFile::ReadOnly|QFile::Text)) throw QString("Cannot open file ")+file;
+   if (!f.open(QFile::ReadOnly|QFile::Text)) throw QString("Cannot open file ")+path+file;
    QTextStream in(&f);
 
    //  Start new displaylist
@@ -201,6 +213,7 @@ WaveOBJ::WaveOBJ(const char* file,const QString& path)
       //  Load materials
       else if (words.size()==2 && words[0]=="mtllib")
          LoadMaterial(words[1],path);
+         // LoadMaterial("/home/aaron/Documents/CSCI5448Project/resources/f-16/f-16.mtl",path);
       //  Skip this line
    }
    f.close();

@@ -1,4 +1,5 @@
 #include "welcomestate.h"
+#include "ship.h"
 
 WelcomeState::WelcomeState(QGLWidget* context) : GameState(context)
 {
@@ -7,7 +8,8 @@ WelcomeState::WelcomeState(QGLWidget* context) : GameState(context)
 
 void WelcomeState::draw()
 {
-    cube(0.1);
+    // cube(0.1);
+	ship();
 }
 
 void WelcomeState::keyPressEvent(QKeyEvent* event)
