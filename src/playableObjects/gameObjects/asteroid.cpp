@@ -1,28 +1,34 @@
 #include "asteroid.h"
+#include "objectLoader/waveOBJ.h"
+#include <QString>
+#include <QMessageBox>
+#include <QDebug>
 
 Asteroid::Asteroid(){
     // suzanne the monkey head asteroid
-    WaveOBJ* suza=0;
+    WaveOBJ* asteroid = 0;
     try
     {
-        suza = new WaveOBJ("suzanne.obj",":/");
+        asteroid = new WaveOBJ("suzanne.obj",":/");
     }
     catch (QString err)
     {
-        Fatal("Error loading object\n"+err);
+        qDebug() << err;
     }
 
     //Is this necessary/in the right place?
-    if (suza)
+    if (asteroid)
     {
-        suza->color(1,1,0);
-        objects.push_back(suza);
+        asteroid->color(1,1,0);
     }
-
-    //add timer? see ex01 -> ex01opengl.cpp
 }
 
-void Asteroid::draw(){
+Asteroid::~Asteroid()
+{
+    delete asteroid;
+}
+
+void Asteroid::draw() const{
     //see ex01 -> WaveOBJ.cpp
-    suza->display();
+    asteroid->display();
 }

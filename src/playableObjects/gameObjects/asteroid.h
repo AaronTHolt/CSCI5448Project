@@ -2,13 +2,17 @@
 #define _ASTEROID_H_
 
 #include "gameObject.h"
+#include "objectLoader/waveOBJ.h"
 
 class Asteroid: public GameObject{
     private:
         int asteroidSize;
+        WaveOBJ* asteroid;
 
     public:
-        void draw();
+    	Asteroid();
+        ~Asteroid();
+        void draw() const;
 };
 
 
