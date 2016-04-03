@@ -15,7 +15,6 @@ protected:
     QGLWidget* gameStateContext;
 
     void cube(float scale = 0.5);
-    void ship();
 };
 
 #endif // _GAMESTATE_H
