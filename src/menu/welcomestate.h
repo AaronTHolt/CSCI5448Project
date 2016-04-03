@@ -3,6 +3,7 @@
 
 #include "gamestate.h"
 #include "gamestatecontext.h"
+#include "ship.h"
 
 class WelcomeState : public GameState
 {
