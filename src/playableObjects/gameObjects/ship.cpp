@@ -2,9 +2,11 @@
 #include "objectLoader/waveOBJ.h"
 #include <QString>
 #include <QMessageBox>
+#include <QDebug>
 
 Ship::Ship() : GameObject()
 {
+
     // F-16
     WaveOBJ* f16=0;
     try
@@ -13,9 +15,7 @@ Ship::Ship() : GameObject()
     }
     catch (QString err)
     {
-        // Fatal("Error loading object\n"+err);
-        // QMessageBox::critical(this,"Ship",err);
-        // QApplication::quit();
+        qDebug() << err;
     }
 
     //Is this necessary/in the right place?
