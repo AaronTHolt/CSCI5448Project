@@ -2,16 +2,17 @@
 #define _WORLD_H_
 
 #include <vector>
+#include <memory>
 
 #include "gameObject.h"
 #include "physicsWorld.h"
 #include "boundary.h"
-//#include "ship.h"
+#include "ship.h"
 
 class World{
  public:
   void registerGameObject(GameObject* go);
-  static World& getWorld();
+  static std::weak_ptr<World> getWorld();
   static void destroy();
   void draw() const;
 
@@ -23,12 +24,12 @@ class World{
   
  private:
   Boundary boundary;
-  //Ship playerShip;
+  Ship playerShip;
   std::vector<GameObject*> spaceObjects;
   PhysicsWorld physicsWorld;
 
   // Private constuctors and Assignment
-  World(){};
+  World();
     
 };
 

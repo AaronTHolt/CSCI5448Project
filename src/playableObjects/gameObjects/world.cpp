@@ -7,9 +7,9 @@ void World::registerGameObject(GameObject* go){
   physicsWorld.registerGameObject(go);
 }
 
-World& World::getWorld(){
-  static std::unique_ptr<World> theWorld(new World);
-  return *theWorld;
+std::weak_ptr<World> World::getWorld(){
+  static std::shared_ptr<World> theWorld(new World);
+  return std::weak_ptr<World>(theWorld);
 }
 
 void World::destroy(){
@@ -22,8 +22,10 @@ void World::draw() const{
   for(const GameObject * const obj : spaceObjects){
     obj->draw();
   }
-  //playerShip.draw();
+  playerShip.draw();
 }
+
+World::World():boundary(),playerShip(){}
 
 World::~World(){
   for(GameObject* obj : spaceObjects){
