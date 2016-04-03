@@ -2,11 +2,12 @@
 #include "objectLoader/waveOBJ.h"
 #include <QString>
 #include <QMessageBox>
+#include <iostream>
 
 Ship::Ship() : GameObject()
 {
     // F-16
-    WaveOBJ* f16=0;
+    f16=nullptr;
     try
     {
         f16 = new WaveOBJ("f-16.obj",":/");
@@ -24,8 +25,6 @@ Ship::Ship() : GameObject()
         f16->color(1,1,0);
         // objects.push_back(f16);
     }
-
-    //add timer? see ex01 -> ex01opengl.cpp
 }
 
 Ship::~Ship()
