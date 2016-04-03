@@ -8,8 +8,7 @@ WelcomeState::WelcomeState(QGLWidget* context) : GameState(context)
 
 void WelcomeState::draw()
 {
-    // cube(0.1);
-	ship();
+    cube(0.1);
 }
 
 void WelcomeState::keyPressEvent(QKeyEvent* event)
