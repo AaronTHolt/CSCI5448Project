@@ -11,6 +11,7 @@ src/bulletLibs.pro
 src/.obj
 src/.moc
 src/.ui
+src/.rcc
 
 # Compiled Object files
 *.slo
