@@ -92,3 +92,18 @@ void GameState::ship()
     }
     f16->display();
 }
+
+void GameState::asteroid()
+{
+    WaveOBJ* asteroid = 0;
+    try
+    {
+        asteroid = new WaveOBJ("suzanne.obj",":/");
+    }
+    catch (QString err)
+    {
+        qDebug() << err;
+        QApplication::quit();
+    }
+    asteroid->display();
+}

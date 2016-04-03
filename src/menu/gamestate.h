@@ -16,6 +16,7 @@ protected:
 
     void cube(float scale = 0.5);
     void ship();
+    void asteroid();
 };
 
 #endif // _GAMESTATE_H

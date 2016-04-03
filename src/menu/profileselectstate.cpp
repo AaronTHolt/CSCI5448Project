@@ -7,7 +7,8 @@ ProfileSelectState::ProfileSelectState(QGLWidget* context) : GameState(context)
 
 void ProfileSelectState::draw()
 {
-    cube(0.3);
+    // cube(0.3);
+    asteroid();
 }
 
 void ProfileSelectState::keyPressEvent(QKeyEvent* event)
