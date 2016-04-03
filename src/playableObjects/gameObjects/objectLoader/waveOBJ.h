@@ -6,7 +6,7 @@
 #ifndef _WAVEOBJ_H_
 #define _WAVEOBJ_H_
 
-#include "Object.h"
+#include "object.h"
 #include <QString>
 #include <QHash>
 

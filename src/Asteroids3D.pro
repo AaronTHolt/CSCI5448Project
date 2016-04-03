@@ -31,3 +31,5 @@ INCLUDEPATH += $$BULLETPATH $$BULLETPATH/src
 DEPENDPATH += BULLETDEPEND
 
 include(Sources.pro)
+
+RESOURCES = Asteroids.qrc
