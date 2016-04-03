@@ -1,5 +1,6 @@
 #include "physicsObject.h"
 
+#include <cmath>
 
 btRigidBody* PhysicsObject::getRigidBody(){
   return rigidBody;
@@ -15,6 +16,14 @@ btRigidBody* PhysicsObject::createRigidBody(btCollisionShape* shape, float mass,
   btDefaultMotionState* myMotionState = new btDefaultMotionState(transform);
   btRigidBody::btRigidBodyConstructionInfo rbInfo(mass,myMotionState,shape,localInertia);
   return new btRigidBody(rbInfo);
+}
+
+float PhysicsObject::degreeToRadian(float degree){
+  return degree * M_PI / 180.0;
+}
+
+float PhysicsObject::radianToDegree(float radian){
+  return radian * 180.0 / M_PI;
 }
 
 // PhysicsObject Destructor

@@ -1,4 +1,4 @@
-#ifndef _PHYSICS_OBJECT_H_
+ #ifndef _PHYSICS_OBJECT_H_
 #define _PHYSICS_OBJECT_H_
 
 #include "btBulletDynamicsCommon.h"
@@ -22,6 +22,8 @@ class PhysicsObject{
   btRigidBody* createRigidBody(btCollisionShape* shape,
 			       float mass, btVector3 pos,
 			       double ry);
+  float degreeToRadian(float degree);
+  float radianToDegree(float radian);
 };
 
 #endif

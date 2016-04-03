@@ -51,4 +51,5 @@ HEADERS += playableObjects/physicsObjects/physicsWorld.h
 SOURCES += playableObjects/physicsObjects/physicsWorld.cpp
 HEADERS += playableObjects/physicsObjects/boundaryPhysicsObject.h
 SOURCES += playableObjects/physicsObjects/boundaryPhysicsObject.cpp
-
+HEADERS += playableObjects/physicsObjects/shipPhysicsObject.h
+SOURCES += playableObjects/physicsObjects/shipPhysicsObject.cpp
