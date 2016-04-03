@@ -14,7 +14,7 @@ GameStateContext::GameStateContext()
     ph = 0;
     th = 0;
 
-    initializeStates();
+    // initializeStates();
 
     currentGameState = Welcome;
 }
@@ -73,6 +73,9 @@ void GameStateContext::initializeGL()
    init = true;
 
    glEnable(GL_DEPTH_TEST);
+
+   initializeStates();
+
 
    //  Start 100 fps timer connected to updateGL
    timer.setInterval(10);
