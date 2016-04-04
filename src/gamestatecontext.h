@@ -27,6 +27,7 @@ public:
     };
 
     GameStateContext();
+
     void draw();
     void setState(GameStates);
 

@@ -19,6 +19,7 @@ GameStateContext::GameStateContext()
     currentGameState = Welcome;
 }
 
+
 void GameStateContext::initializeStates()
 {
     welcomeState = new WelcomeState(this);
