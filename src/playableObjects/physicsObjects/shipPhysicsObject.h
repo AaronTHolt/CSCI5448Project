@@ -3,7 +3,7 @@
 
 #include "physicsObject.h"
 
-class ShipPhysicsObject : PhysicsObject{
+class ShipPhysicsObject : public PhysicsObject{
  public:
   ShipPhysicsObject();
   ~ShipPhysicsObject();
