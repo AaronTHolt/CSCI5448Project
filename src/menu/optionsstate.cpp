@@ -2,12 +2,13 @@
 
 OptionsState::OptionsState(QGLWidget* context) : GameState(context)
 {
-
+    cube = new Cube(0.0, 0.0, 0.0,
+                    0.5, 0.5, 0.5);
 }
 
 void OptionsState::draw()
 {
-    cube(0.5);
+    cube->draw();
 }
 
 void OptionsState::keyPressEvent(QKeyEvent* event)

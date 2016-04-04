@@ -152,36 +152,36 @@ void GameStateContext::keyPressEvent(QKeyEvent* event)
 
 void GameStateContext::mousePressEvent(QMouseEvent* event)
 {
-   mouse = true;
-   pos = event->pos(); //  Remember mouse location
+//   mouse = true;
+//   pos = event->pos(); //  Remember mouse location
 }
 
 void GameStateContext::mouseReleaseEvent(QMouseEvent*)
 {
-    mouse = false;
+//    mouse = false;
 }
 
 void GameStateContext::mouseMoveEvent(QMouseEvent* event)
 {
-   if (mouse)
-   {
-      QPoint d = event->pos() - pos; //  Change in mouse location
-      th = (th + d.x()) % 360; //  Translate x movement to azimuth
-      ph = (ph + d.y()) % 360; //  Translate y movement to elevation
-      pos = event->pos(); //  Remember new location
-      updateGL(); //  Request redisplay
-   }
+//   if (mouse)
+//   {
+//      QPoint d = event->pos() - pos; //  Change in mouse location
+//      th = (th + d.x()) % 360; //  Translate x movement to azimuth
+//      ph = (ph + d.y()) % 360; //  Translate y movement to elevation
+//      pos = event->pos(); //  Remember new location
+//      updateGL(); //  Request redisplay
+//   }
 }
 
 void GameStateContext::wheelEvent(QWheelEvent* e)
 {
-   if (e->delta() < 0) //  Zoom out
-   {
-       dim += 0.1;
-   }
-   else if (dim > 1) //  Zoom in
-   {
-       dim -= 0.1;
-   }
-   updateGL();
+//   if (e->delta() < 0) //  Zoom out
+//   {
+//       dim += 0.1;
+//   }
+//   else if (dim > 1) //  Zoom in
+//   {
+//       dim -= 0.1;
+//   }
+//   updateGL();
 }

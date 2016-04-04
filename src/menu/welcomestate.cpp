@@ -2,12 +2,13 @@
 
 WelcomeState::WelcomeState(QGLWidget* context) : GameState(context)
 {
-
+    cube = new Cube(0.0, 0.0, 0.0,
+                    0.1, 0.1, 0.1);
 }
 
 void WelcomeState::draw()
 {
-    cube(0.1);
+    cube->draw();
 }
 
 void WelcomeState::keyPressEvent(QKeyEvent* event)

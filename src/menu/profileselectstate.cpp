@@ -2,12 +2,13 @@
 
 ProfileSelectState::ProfileSelectState(QGLWidget* context) : GameState(context)
 {
-
+    cube = new Cube(0.0, 0.0, 0.0,
+                    0.3, 0.3, 0.3);
 }
 
 void ProfileSelectState::draw()
 {
-    cube(0.3);
+    cube->draw();
 }
 
 void ProfileSelectState::keyPressEvent(QKeyEvent* event)

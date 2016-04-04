@@ -2,12 +2,13 @@
 
 PlayableState::PlayableState(QGLWidget* context) : GameState(context)
 {
-
+    cube = new Cube(0.0, 0.0, 0.0,
+                    1.1, 1.1, 1.1);
 }
 
 void PlayableState::draw()
 {
-    cube(1.1);
+    cube->draw();
 }
 
 void PlayableState::keyPressEvent(QKeyEvent* event)

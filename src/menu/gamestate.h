@@ -4,6 +4,8 @@
 #include <QGLWidget>
 #include <QtOpenGL>
 
+#include "cube.h"
+
 class GameState
 {
 public:
@@ -14,7 +16,7 @@ public:
 protected:
     QGLWidget* gameStateContext;
 
-    void cube(float scale = 0.5);
+    Cube* cube;
 };
 
 #endif // _GAMESTATE_H

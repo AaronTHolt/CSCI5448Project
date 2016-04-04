@@ -2,12 +2,13 @@
 
 StatsState::StatsState(QGLWidget* context) : GameState(context)
 {
-
+    cube = new Cube(0.0, 0.0, 0.0,
+                    0.9, 0.9, 0.9);
 }
 
 void StatsState::draw()
 {
-    cube(0.9);
+    cube->draw();
 }
 
 void StatsState::keyPressEvent(QKeyEvent* event)
