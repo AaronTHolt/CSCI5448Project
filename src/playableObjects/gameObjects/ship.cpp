@@ -1,11 +1,15 @@
 #include "ship.h"
 #include "objectLoader/waveOBJ.h"
+#include "shipPhysicsObject.h"
+
 #include <QString>
 #include <QMessageBox>
 #include <iostream>
 
 Ship::Ship() : GameObject()
 {
+    physicsObject = new ShipPhysicsObject();
+
     // F-16
     f16=nullptr;
     try
@@ -23,7 +27,6 @@ Ship::Ship() : GameObject()
     if (f16)
     {
         f16->color(1,1,0);
-        // objects.push_back(f16);
     }
 }
 
@@ -56,12 +59,3 @@ void Ship::draw() const{
     //see ex01 -> WaveOBJ.cpp
     f16->display();
 }
-
-//
-//  Throw a fatal error and die
-//
-// void Ship::Fatal(QString message)
-// {
-//    QMessageBox::critical(this,"Ex01opengl",message);
-//    QApplication::quit();
-// }
