@@ -6,7 +6,7 @@
 
 QT += core gui opengl
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets 
 
 TARGET = Asteroids3D
 DESTDIR = ..
@@ -15,7 +15,7 @@ MOC_DIR = .moc
 RCC_DIR = .rcc
 UI_DIR = .ui
 
-CONFIG += c++11
+CONFIG += c++11 debug
 
 TEMPLATE = app
 
@@ -31,3 +31,5 @@ INCLUDEPATH += $$BULLETPATH $$BULLETPATH/src
 DEPENDPATH += BULLETDEPEND
 
 include(Sources.pro)
+
+RESOURCES = Asteroids.qrc

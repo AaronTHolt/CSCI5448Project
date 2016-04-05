@@ -2,13 +2,15 @@
 
 PlayableState::PlayableState(QGLWidget* context) : GameState(context)
 {
-    cube = new Cube(0.0, 0.0, 0.0,
-                    1.1, 1.1, 1.1);
+    theWorld = World::getWorld();
 }
 
 void PlayableState::draw()
 {
-    cube->draw();
+    if (auto spt = theWorld.lock()) // Has to be copied into a shared_ptr before usage
+    {
+        spt->draw();
+    }
 }
 
 void PlayableState::keyPressEvent(QKeyEvent* event)

@@ -1,5 +1,5 @@
 #include "welcomestate.h"
-#include<iostream>
+#include "ship.h"
 
 WelcomeState::WelcomeState(QGLWidget* context) : GameState(context)
 {
