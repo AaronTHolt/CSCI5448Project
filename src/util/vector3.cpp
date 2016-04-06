@@ -37,3 +37,7 @@ float Vector3::getY() const{
 float Vector3::getZ() const{
   return vec.z();
 }
+
+Vector3::operator btVector3() const{
+  return vec;
+}

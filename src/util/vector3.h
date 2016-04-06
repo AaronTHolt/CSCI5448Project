@@ -15,6 +15,10 @@ class Vector3{
   float getX() const;
   float getY() const;
   float getZ() const;
+
+  // Conversion operator to btVector3
+  //  Warning this is an implicit operator
+  operator btVector3() const;
   
  private:
   btVector3 vec;
