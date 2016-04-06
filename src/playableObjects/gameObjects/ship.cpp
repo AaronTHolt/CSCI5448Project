@@ -3,7 +3,6 @@
 #include "shipPhysicsObject.h"
 #include "basicWeapon.h"
 
-
 #include <QString>
 #include <QMessageBox>
 #include <iostream>
