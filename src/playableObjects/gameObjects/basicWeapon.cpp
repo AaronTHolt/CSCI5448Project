@@ -1,10 +1,14 @@
 #include "basicWeapon.h"
 #include "cube.h"
+#include "projectile.h"
 
 #include <iostream>
 
 BasicWeapon::BasicWeapon(): Weapon()
 {
+    for (unsigned int i=0; i<bulletCount; i++){
+        Bullet[i] = new Projectile(0);
+    }
 }
 
 BasicWeapon::~BasicWeapon(){
@@ -21,9 +25,9 @@ void BasicWeapon::returnBullet(){
 void BasicWeapon::fire(){
 
 	bulletCount -= 1;
-	Cube* cc = new Cube(1,1,1,2,2,2,0);
-    cc->draw();
+	// Cube* cc = new Cube(1,1,1,2,2,2,0);
+ //    cc->draw();
 	//create new projectile
-	// Bullet[bulletCount] = new Projectile(BasicWeapon weapon);
+	Bullet[bulletCount]->draw;
 }
 

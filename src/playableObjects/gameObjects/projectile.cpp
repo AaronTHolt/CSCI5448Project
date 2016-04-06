@@ -1,11 +1,27 @@
 #include "projectile.h"
 #include "cube.h"
 
-Projectile::Projectile(){
+Projectile::Projectile(int type){
 	// physicsObject = new projectilePhysicsObject();
-	// cube(1,0,0,1,1,1,0);
+
+    if (type == 0){
+        proj = new Cube(1,1,1,1,1,1,0);
+    }
+	
+}
+
+Projectile::~Projectile(){
+    delete proj;
 }
 
 void Projectile::onCollision(){
 	weapon.returnBullet();
+}
+
+bool Projectile::isInPlay(){
+
+}
+
+void Projectile::draw(){
+    proj->draw();
 }

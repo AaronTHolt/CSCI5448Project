@@ -7,7 +7,7 @@
 class BasicWeapon: public Weapon{
 	private:
 		unsigned int bulletCount = 3;
-		// Projectile Bullet[3];
+		Projectile* Bullet[3];
 
 	public:
 		BasicWeapon();

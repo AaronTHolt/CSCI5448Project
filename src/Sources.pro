@@ -72,8 +72,8 @@ SOURCES += playableObjects/gameObjects/weapon.cpp
 HEADERS += playableObjects/gameObjects/weapon.h
 SOURCES += playableObjects/gameObjects/basicWeapon.cpp
 HEADERS += playableObjects/gameObjects/basicWeapon.h
-#SOURCES += playableObjects/gameObjects/projectile.cpp
-#HEADERS += playableObjects/gameObjects/projectile.h
+SOURCES += playableObjects/gameObjects/projectile.cpp
+HEADERS += playableObjects/gameObjects/projectile.h
 
 #Ship
 HEADERS += playableObjects/gameObjects/ship.h

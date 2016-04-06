@@ -4,9 +4,15 @@
 #include "weapon.h"
 
 class Projectile{
-	public:
+	private:
+        bool isInPlay();
+    public:
 		Projectile();
+        ~Projectile();
 		void onCollision();
+        void draw();
+
+        Cube* proj;
 
 		
 
