@@ -4,8 +4,10 @@
 #include "ship.h"
 
 class ShipControls{
+ public:
+  ShipControls(Ship* ship);
  protected:
-  Ship ship;
+  Ship* ship;
 };
 
 #endif

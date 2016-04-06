@@ -8,7 +8,7 @@
 
 class PlayerShipControls : public ShipControls{
  public:
-  PlayerShipControls(Ship s);
+  PlayerShipControls(Ship* s);
   
   void onKeyPressed(QKeyEvent* event);
 

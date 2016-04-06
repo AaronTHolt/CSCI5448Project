@@ -69,5 +69,6 @@ SOURCES += playableObjects/gameObjects/ship.cpp
 
 # Control Objects
 HEADERS += playableObjects/controlObjects/shipControls.h
+SOURCES += playableObjects/controlObjects/shipControls.cpp
 HEADERS += playableObjects/controlObjects/playerShipControls.h
 SOURCES += playableObjects/controlObjects/playerShipControls.cpp
