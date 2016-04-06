@@ -56,6 +56,10 @@ void Ship::fireDefaultWeapon(){
 // }
 
 void Ship::draw() const{
-    //see ex01 -> WaveOBJ.cpp
-    f16->display();
+  glPushMatrix();
+  float rotMatrix[16];
+  glMultMatrixf(rotMatrix);
+  //see ex01 -> WaveOBJ.cpp
+  f16->display();
+  glPopMatrix();
 }

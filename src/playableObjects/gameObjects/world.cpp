@@ -25,6 +25,10 @@ void World::draw() const{
   playerShip.draw();
 }
 
+Ship* World::getPlayerShip(){
+  return &playerShip;
+}
+
 World::World():boundary(),playerShip(){}
 
 World::~World(){

@@ -1,8 +1,13 @@
 #include "playerShipControls.h"
 
-PlayerShipControls::PlayerShipControls(Ship* s):ShipControls(s) {}
+PlayerShipControls::PlayerShipControls(Ship* s):ShipControls(s){}
+PlayerShipControls::PlayerShipControls():ShipControls(nullptr) {}
 
-void PlayerShipControls::onKeyPressed(QKeyEvent* event){
+void PlayerShipControls::keyPressEvent(QKeyEvent* event){
+  if(nullptr == ship){
+    return;
+  }
+  
   const Qt::Key thrust = Qt::Key_W;
   const Qt::Key fire = Qt::Key_S;
   const Qt::Key pitchUp = Qt::Key_Up;

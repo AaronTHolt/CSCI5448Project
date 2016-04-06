@@ -20,7 +20,8 @@ class World{
   
   World(const World&) = delete;
   void operator=(const World&) = delete;
-  
+
+  Ship* getPlayerShip();
   
  private:
   Boundary boundary;

@@ -9,8 +9,9 @@
 class PlayerShipControls : public ShipControls{
  public:
   PlayerShipControls(Ship* s);
+  PlayerShipControls();
   
-  void onKeyPressed(QKeyEvent* event);
+  void keyPressEvent(QKeyEvent* event);
 
 };
 

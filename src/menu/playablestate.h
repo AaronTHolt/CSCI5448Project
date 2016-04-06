@@ -4,6 +4,7 @@
 #include "gamestate.h"
 #include "gamestatecontext.h"
 #include "world.h"
+#include "playerShipControls.h"
 
 #include <memory>
 
@@ -16,6 +17,7 @@ public:
 
 private:
     std::weak_ptr<World> theWorld;
+    PlayerShipControls playerControls;
 };
 
 #endif // _PLAYABLESTATE_H

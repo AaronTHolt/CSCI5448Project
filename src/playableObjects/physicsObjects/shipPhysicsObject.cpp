@@ -37,3 +37,15 @@ const Vector3 ShipPhysicsObject::getForward() const{
   forward*=force;
   return forward;
 }
+
+const Vector3 ShipPhysicsObject::getPosition() const{
+  return rigidBody->getCenterOfMassPosition();
+}
+
+void ShipPhysicsObject::getRotationMatrix(float * mat){
+  const int matDim = 16;
+  for(int i = 0; i < matDim; i++){
+    mat[i] = 0;
+  }
+  rigidBody->getCenterOfMassTransform().getOpenGLMatrix(mat);
+}
