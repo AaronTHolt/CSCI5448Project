@@ -1,6 +1,7 @@
 #include "ship.h"
 #include "objectLoader/waveOBJ.h"
 #include "shipPhysicsObject.h"
+#include "basicWeapon.h"
 
 #include <QString>
 #include <QMessageBox>
@@ -48,7 +49,7 @@ void Ship::yaw(bool yawRight){
 }
 
 void Ship::fireDefaultWeapon(){
-  // defaultWeapon->fire();
+    basicWeapon->fire();
 }
 
 // void Ship::fireAuxiliaryWeapon(){
