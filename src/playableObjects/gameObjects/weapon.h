@@ -4,7 +4,7 @@
 class Weapon{
 	public:
 		virtual ~Weapon() = 0;
-		virtual void fire();
+		virtual void fire() = 0;
 
 };
 
