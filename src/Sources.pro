@@ -66,3 +66,8 @@ HEADERS += playableObjects/gameObjects/objectLoader/type.h
 
 HEADERS += playableObjects/gameObjects/ship.h
 SOURCES += playableObjects/gameObjects/ship.cpp
+
+# Control Objects
+HEADERS += playableObjects/controlObjects/shipControls.h
+HEADERS += playableObjects/controlObjects/playerShipControls.h
+SOURCES += playableObjects/controlObjects/playerShipControls.cpp
