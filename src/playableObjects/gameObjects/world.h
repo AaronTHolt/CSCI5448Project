@@ -22,6 +22,7 @@ class World{
   void operator=(const World&) = delete;
 
   Ship* getPlayerShip();
+  void stepWorld();
   
  private:
   Boundary boundary;
@@ -31,7 +32,7 @@ class World{
 
   // Private constuctors and Assignment
   World();
-    
+
 };
 
 #endif

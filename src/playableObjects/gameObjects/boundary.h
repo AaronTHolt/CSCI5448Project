@@ -5,7 +5,7 @@
 #include "cube.h"
 #include "cubeSides.h"
 
-class Boundary : GameObject{
+class Boundary : public GameObject{
  public:
   Boundary();
   ~Boundary();

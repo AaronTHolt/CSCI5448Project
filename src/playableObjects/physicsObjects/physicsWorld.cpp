@@ -22,6 +22,10 @@ PhysicsWorld::PhysicsWorld(){
   
 }
 
+void PhysicsWorld::stepSim(){
+  world->stepSimulation(1.f/60.f, 10);
+}
+
 PhysicsWorld::~PhysicsWorld(){
   delete world;
   delete solver;

@@ -10,13 +10,14 @@ class PhysicsWorld{
   ~PhysicsWorld();
   
   void registerGameObject(GameObject* obj);
+  void stepSim();
 
  private:
   btCollisionConfiguration* collisionConfiguration;
   btCollisionDispatcher* collisionDispatcher;
   btBroadphaseInterface* pairCache;
   btConstraintSolver* solver;
-  btCollisionWorld* world;
+  btDynamicsWorld* world;
 
   btIDebugDraw* debugDrawer;
 };

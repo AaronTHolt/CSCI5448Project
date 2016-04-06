@@ -11,6 +11,7 @@ PlayableState::PlayableState(QGLWidget* context) : GameState(context)
 void PlayableState::draw()
 {
     if (auto spt = theWorld.lock()) { // Has to be copied into a shared_ptr before usage
+        spt->stepWorld();
         spt->draw();
     }
     
