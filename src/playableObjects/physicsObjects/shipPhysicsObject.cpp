@@ -9,11 +9,7 @@ ShipPhysicsObject::ShipPhysicsObject(){
 ShipPhysicsObject::~ShipPhysicsObject(){}
 
 void ShipPhysicsObject::applyForce(){
-  btTransform front = rigidBody->getCenterOfMassTransform();
-  btVector3 forward = btVector3(1,0,0);
-  forward = front(forward);
-  forward*=force;
-  rigidBody->applyCentralForce(forward);
+  rigidBody->applyCentralForce(getForward());
 }
 
 void ShipPhysicsObject::applyRotationPitch(bool pitchUp){
@@ -32,4 +28,12 @@ void ShipPhysicsObject::applyRotationYaw(bool pitchUp){
   btTransform newTransform = rigidBody->getCenterOfMassTransform();
   newTransform.setRotation(newOrientation);
   rigidBody->setCenterOfMassTransform(newTransform);
+}
+
+const Vector3 ShipPhysicsObject::getForward() const{
+  btTransform front = rigidBody->getCenterOfMassTransform();
+  btVector3 forward = btVector3(1,0,0);
+  forward = front(forward);
+  forward*=force;
+  return forward;
 }
