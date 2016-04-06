@@ -2,12 +2,12 @@
 #define _BASIC_WEAPON_H_
 
 #include "weapon.h"
-#include "projectile.h"
+// #include "projectile.h"
 
 class BasicWeapon: public Weapon{
 	private:
 		unsigned int bulletCount = 3;
-		Projectile Bullet[3];
+		// Projectile Bullet[3];
 
 	public:
 		BasicWeapon();
@@ -15,7 +15,6 @@ class BasicWeapon: public Weapon{
 
 		void fire();
 		void returnBullet();
-
 };
 
 #endif
