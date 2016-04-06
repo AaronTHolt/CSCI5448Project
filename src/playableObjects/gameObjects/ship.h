@@ -6,6 +6,7 @@
 #include "weapon.h"
 
 
+
 class Ship: public GameObject{
     private:
         Weapon* basicWeapon;

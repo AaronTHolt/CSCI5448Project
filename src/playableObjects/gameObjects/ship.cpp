@@ -3,6 +3,7 @@
 #include "shipPhysicsObject.h"
 #include "basicWeapon.h"
 
+
 #include <QString>
 #include <QMessageBox>
 #include <iostream>
@@ -10,6 +11,7 @@
 Ship::Ship() : GameObject()
 {
     physicsObject = new ShipPhysicsObject();
+    basicWeapon = new BasicWeapon();
 
     // F-16
     f16=nullptr;
@@ -49,6 +51,7 @@ void Ship::yaw(bool yawRight){
 }
 
 void Ship::fireDefaultWeapon(){
+    
     basicWeapon->fire();
 }
 

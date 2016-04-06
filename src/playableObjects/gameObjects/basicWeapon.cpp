@@ -1,23 +1,28 @@
 #include "basicWeapon.h"
+#include "cube.h"
 
-basicWeapon::~BasicWeapon(){}
+#include <iostream>
 
-basicWeapon::BasicWeapon(){
-
+BasicWeapon::BasicWeapon() : Weapon()
+{
+	std::cout << "HI!" << std::endl;
 }
 
+BasicWeapon::~BasicWeapon(){}
+
 //Adds projectiles back after collisions.
-basicWeapon::returnBullet(){
+void BasicWeapon::returnBullet(){
 	//destroy collided projectile
-	delete Bullet[bulletCount];
+	// delete Bullet[bulletCount];
 
 	bulletCount += 1;
 }
 
-basicWeapon::fire(){
-	bulletCount -= 1;
+void BasicWeapon::fire(){
 
+	bulletCount -= 1;
+	// cube(1,1,1,0,0,0,0);
 	//create new projectile
-	Bullet[bulletCount] = new Projectile(BasicWeapon weapon);
+	// Bullet[bulletCount] = new Projectile(BasicWeapon weapon);
 }
 

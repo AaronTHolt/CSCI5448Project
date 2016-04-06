@@ -6,7 +6,6 @@
 
 class BasicWeapon: public Weapon{
 	private:
-		//True means fired, false is available
 		unsigned int bulletCount = 3;
 		Projectile Bullet[3];
 
@@ -15,6 +14,7 @@ class BasicWeapon: public Weapon{
 		~BasicWeapon();
 
 		void fire();
+		void returnBullet();
 
 };
 

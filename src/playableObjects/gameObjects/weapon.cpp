@@ -1,3 +1,4 @@
 #include "weapon.h"
 
-weapon::~weapon(){}
+// Weapon::~Weapon(){}
+
