@@ -60,13 +60,22 @@ SOURCES += playableObjects/physicsObjects/asteroidPhysicsObject.cpp
 HEADERS += playableObjects/physicsObjects/projectilePhysicsObject.h
 SOURCES += playableObjects/physicsObjects/projectilePhysicsObject.cpp
 
-#Ship
+#Obj loader
 HEADERS += playableObjects/gameObjects/objectLoader/object.h
 SOURCES += playableObjects/gameObjects/objectLoader/object.cpp
 HEADERS += playableObjects/gameObjects/objectLoader/waveOBJ.h
 SOURCES += playableObjects/gameObjects/objectLoader/waveOBJ.cpp
 HEADERS += playableObjects/gameObjects/objectLoader/type.h
 
+#Weapon
+SOURCES += playableObjects/gameObjects/weapon.cpp
+HEADERS += playableObjects/gameObjects/weapon.h
+SOURCES += playableObjects/gameObjects/basicWeapon.cpp
+HEADERS += playableObjects/gameObjects/basicWeapon.h
+#SOURCES += playableObjects/gameObjects/projectile.cpp
+#HEADERS += playableObjects/gameObjects/projectile.h
+
+#Ship
 HEADERS += playableObjects/gameObjects/ship.h
 SOURCES += playableObjects/gameObjects/ship.cpp
 
@@ -83,3 +92,4 @@ HEADERS += playableObjects/gameObjects/basicWeapon.cpp
 SOURCES += playableObjects/gameObjects/basicWeapon.h
 HEADERS += playableObjects/gameObjects/projectile.cpp
 SOURCES += playableObjects/gameObjects/projectile.h
+
