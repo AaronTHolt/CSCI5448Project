@@ -12,6 +12,7 @@ void PlayableState::draw()
 {
     if (auto spt = theWorld.lock()) { // Has to be copied into a shared_ptr before usage
         spt->stepWorld();
+	spt->debugDraw();
         spt->draw();
     }
     

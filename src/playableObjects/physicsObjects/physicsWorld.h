@@ -12,6 +12,8 @@ class PhysicsWorld{
   void registerGameObject(GameObject* obj);
   void stepSim();
 
+  void debugDraw();
+
  private:
   btCollisionConfiguration* collisionConfiguration;
   btCollisionDispatcher* collisionDispatcher;

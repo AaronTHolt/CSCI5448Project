@@ -27,6 +27,10 @@ void World::draw() const{
   playerShip.draw();
 }
 
+void World::debugDraw(){
+  physicsWorld.debugDraw();
+}
+
 void World::stepWorld(){
   physicsWorld.stepSim();
 }

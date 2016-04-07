@@ -15,6 +15,7 @@ class World{
   static std::weak_ptr<World> getWorld();
   static void destroy();
   void draw() const;
+  void debugDraw();
 
   ~World();
   

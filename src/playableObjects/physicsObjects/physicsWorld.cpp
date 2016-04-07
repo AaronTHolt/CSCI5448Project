@@ -17,6 +17,8 @@ PhysicsWorld::PhysicsWorld(){
     debugDrawer = new GLDebugDrawer();
     world->setDebugDrawer(debugDrawer);
   }
+  // There is no gravity
+  world->setGravity(btVector3(0,0,0));
   // Set the Debug Drawer State
   world->getDebugDrawer()->setDebugMode(btIDebugDraw::DBG_DrawWireframe);
   
@@ -24,6 +26,10 @@ PhysicsWorld::PhysicsWorld(){
 
 void PhysicsWorld::stepSim(){
   world->stepSimulation(1.f/60.f, 10);
+}
+
+void PhysicsWorld::debugDraw(){
+  world->debugDrawWorld();
 }
 
 PhysicsWorld::~PhysicsWorld(){
@@ -36,5 +42,5 @@ PhysicsWorld::~PhysicsWorld(){
 }
 
 void PhysicsWorld::registerGameObject(GameObject* obj){
-  world->addCollisionObject(obj->getPhysicsObject().getRigidBody());
+  world->addRigidBody(obj->getPhysicsObject().getRigidBody());
 }

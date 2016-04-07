@@ -25,6 +25,9 @@ class PhysicsObject{
 			       double ry);
   float degreeToRadian(float degree);
   float radianToDegree(float radian);
+
+ private:
+  btMotionState* motionState;
 };
 
 #endif

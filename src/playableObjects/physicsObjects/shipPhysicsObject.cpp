@@ -1,15 +1,21 @@
 #include "shipPhysicsObject.h"
 
 ShipPhysicsObject::ShipPhysicsObject(){
-  collisionShape = new btBoxShape(btVector3(2.0, 1.0, 2.0));
   // f-16 mass 12000 kg fully loaded
-  rigidBody = createRigidBody(collisionShape, 2.0f, btVector3(0,0,0), 0);
+  const float mass = 2.0f;
+  collisionShape = new btBoxShape(btVector3(2.0, 1.0, 2.0));
+  btVector3 localInertia(0,0,0);
+  collisionShape->calculateLocalInertia(mass, localInertia);
+  rigidBody = createRigidBody(collisionShape, mass, btVector3(0,0,0), 0);
+  rigidBody->setActivationState(DISABLE_DEACTIVATION);
 }
 
 ShipPhysicsObject::~ShipPhysicsObject(){}
 
 void ShipPhysicsObject::applyForce(){
-  rigidBody->applyCentralForce(getForward());
+  btVector3 forward = getForward();
+  forward *= 100 * force;
+  rigidBody->applyCentralForce(forward);
 }
 
 void ShipPhysicsObject::applyRotationPitch(bool pitchUp){
@@ -32,10 +38,9 @@ void ShipPhysicsObject::applyRotationYaw(bool yawRight){
 
 const Vector3 ShipPhysicsObject::getForward() const{
   btTransform front = rigidBody->getCenterOfMassTransform();
-  btVector3 forward = btVector3(1,0,0);
+  btVector3 forward = btVector3(0,0,1);
   forward = front(forward);
-  forward*=force;
-  return forward;
+  return forward.normalize();
 }
 
 const Vector3 ShipPhysicsObject::getPosition() const{
