@@ -14,7 +14,7 @@ ShipPhysicsObject::~ShipPhysicsObject(){}
 
 void ShipPhysicsObject::applyForce(){
   btVector3 forward = getForward();
-  forward *= 100 * force;
+  forward *= force;
   rigidBody->applyCentralForce(forward);
 }
 
@@ -37,9 +37,9 @@ void ShipPhysicsObject::applyRotationYaw(bool yawRight){
 }
 
 const Vector3 ShipPhysicsObject::getForward() const{
-  btTransform front = rigidBody->getCenterOfMassTransform();
+  btTransform front = btTransform(rigidBody->getOrientation());
   btVector3 forward = btVector3(0,0,1);
-  forward = front(forward);
+  forward = front*forward;
   return forward.normalize();
 }
 
