@@ -34,5 +34,6 @@ void PlayerShipControls::keyPressEvent(QKeyEvent* event){
     break;
   case yawRight:
     ship->yaw(true);
+    break;
   }
 }
