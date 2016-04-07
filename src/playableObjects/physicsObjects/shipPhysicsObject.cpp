@@ -36,13 +36,3 @@ void ShipPhysicsObject::applyRotationYaw(bool yawRight){
   rigidBody->setCenterOfMassTransform(newTransform);
 }
 
-const Vector3 ShipPhysicsObject::getForward() const{
-  btTransform front = btTransform(rigidBody->getOrientation());
-  btVector3 forward = btVector3(0,0,1);
-  forward = front*forward;
-  return forward.normalize();
-}
-
-const Vector3 ShipPhysicsObject::getPosition() const{
-  return rigidBody->getCenterOfMassPosition();
-}

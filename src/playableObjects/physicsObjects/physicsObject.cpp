@@ -41,3 +41,18 @@ void PhysicsObject::getRotationMatrix(float * mat){
   }
   rigidBody->getCenterOfMassTransform().getOpenGLMatrix(mat);
 }
+
+const Vector3 PhysicsObject::getForward() const{
+  btTransform front = btTransform(rigidBody->getOrientation());
+  btVector3 forward = btVector3(0,0,1);
+  forward = front*forward;
+  return forward.normalize();
+}
+
+const Vector3 PhysicsObject::getPosition() const{
+  return rigidBody->getCenterOfMassPosition();
+}
+
+const Vector3 PhysicsObject::getVelocity() const{
+  return rigidBody->getLinearVelocity();
+}
