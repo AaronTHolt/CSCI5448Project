@@ -21,9 +21,9 @@ void ShipPhysicsObject::applyRotationPitch(bool pitchUp){
   rigidBody->setCenterOfMassTransform(newTransform);
 }
 
-void ShipPhysicsObject::applyRotationYaw(bool pitchUp){
+void ShipPhysicsObject::applyRotationYaw(bool yawRight){
   float delta = degreeToRadian(10);
-  btQuaternion yawChange = btQuaternion(0, 0, delta*(pitchUp?1:-1));
+  btQuaternion yawChange = btQuaternion(delta*(yawRight?-1:1), 0, 0);
   btQuaternion newOrientation = rigidBody->getCenterOfMassTransform()*yawChange;
   btTransform newTransform = rigidBody->getCenterOfMassTransform();
   newTransform.setRotation(newOrientation);
