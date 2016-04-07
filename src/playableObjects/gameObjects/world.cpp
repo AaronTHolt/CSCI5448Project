@@ -36,8 +36,8 @@ Ship* World::getPlayerShip(){
 }
 
 World::World():boundary(),playerShip(){
-  registerGameObject(&boundary);
-  registerGameObject(&playerShip);
+  physicsWorld.registerGameObject(&boundary);
+  physicsWorld.registerGameObject(&playerShip);
 }
 
 World::~World(){
