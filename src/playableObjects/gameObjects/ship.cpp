@@ -57,9 +57,12 @@ void Ship::fireDefaultWeapon(){
 
 void Ship::draw() const{
   glPushMatrix();
-  float rotMatrix[16];
+  float* rotMatrix = new float[16];
+  physicsObject->getRotationMatrix(rotMatrix);
   glMultMatrixf(rotMatrix);
+  // glLoadMatrix(rotMatrix);
   //see ex01 -> WaveOBJ.cpp
   f16->display();
   glPopMatrix();
+  delete rotMatrix;
 }

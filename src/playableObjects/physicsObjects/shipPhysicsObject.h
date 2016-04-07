@@ -13,7 +13,6 @@ class ShipPhysicsObject : public PhysicsObject{
   void applyRotationPitch(bool pitchUp);
   void applyRotationYaw(bool yawRight);
   const Vector3 getForward() const;
-  void getRotationMatrix(float* mat);
   const Vector3 getPosition() const;
 
  private:

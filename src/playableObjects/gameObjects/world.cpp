@@ -25,7 +25,6 @@ void World::draw() const{
     obj->draw();
   }
   playerShip.draw();
-  std::cout << glGetError() << std::endl;
 }
 
 void World::stepWorld(){

@@ -32,3 +32,11 @@ PhysicsObject::~PhysicsObject(){
   delete rigidBody;
   delete collisionShape;
 }
+
+void PhysicsObject::getRotationMatrix(float * mat){
+  const int matDim = 16;
+  for(int i = 0; i < matDim; i++){
+    mat[i] = 0;
+  }
+  rigidBody->getCenterOfMassTransform().getOpenGLMatrix(mat);
+}

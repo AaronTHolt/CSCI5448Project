@@ -11,7 +11,8 @@ class PhysicsObject{
   virtual void applyForce() = 0;
   virtual void applyRotationPitch(bool pitchUp) = 0;
   virtual void applyRotationYaw(bool yawRight) = 0;
-
+  
+  void getRotationMatrix(float* mat);
   btRigidBody* getRigidBody();
   
  protected:

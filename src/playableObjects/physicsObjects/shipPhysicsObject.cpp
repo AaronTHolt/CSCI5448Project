@@ -3,7 +3,7 @@
 ShipPhysicsObject::ShipPhysicsObject(){
   collisionShape = new btBoxShape(btVector3(2.0, 1.0, 2.0));
   // f-16 mass 12000 kg fully loaded
-  rigidBody = createRigidBody(collisionShape, 12.0f, btVector3(0,0,0), 0);
+  rigidBody = createRigidBody(collisionShape, 2.0f, btVector3(0,0,0), 0);
 }
 
 ShipPhysicsObject::~ShipPhysicsObject(){}
@@ -40,12 +40,4 @@ const Vector3 ShipPhysicsObject::getForward() const{
 
 const Vector3 ShipPhysicsObject::getPosition() const{
   return rigidBody->getCenterOfMassPosition();
-}
-
-void ShipPhysicsObject::getRotationMatrix(float * mat){
-  const int matDim = 16;
-  for(int i = 0; i < matDim; i++){
-    mat[i] = 0;
-  }
-  rigidBody->getCenterOfMassTransform().getOpenGLMatrix(mat);
 }
