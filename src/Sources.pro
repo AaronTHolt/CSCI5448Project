@@ -57,6 +57,8 @@ HEADERS += playableObjects/physicsObjects/shipPhysicsObject.h
 SOURCES += playableObjects/physicsObjects/shipPhysicsObject.cpp
 HEADERS += playableObjects/physicsObjects/asteroidPhysicsObject.h
 SOURCES += playableObjects/physicsObjects/asteroidPhysicsObject.cpp
+HEADERS += playableObjects/physicsObjects/projectilePhysicsObject.h
+SOURCES += playableObjects/physicsObjects/projectilePhysicsObject.cpp
 
 #Ship
 HEADERS += playableObjects/gameObjects/objectLoader/object.h
