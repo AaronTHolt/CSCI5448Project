@@ -15,12 +15,15 @@ class World{
   static std::weak_ptr<World> getWorld();
   static void destroy();
   void draw() const;
+  void debugDraw();
 
   ~World();
   
   World(const World&) = delete;
   void operator=(const World&) = delete;
-  
+
+  Ship* getPlayerShip();
+  void stepWorld();
   
  private:
   Boundary boundary;
@@ -30,7 +33,7 @@ class World{
 
   // Private constuctors and Assignment
   World();
-    
+
 };
 
 #endif

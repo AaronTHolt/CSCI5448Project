@@ -1,18 +1,20 @@
 #include "shipPhysicsObject.h"
 
 ShipPhysicsObject::ShipPhysicsObject(){
-  collisionShape = new btBoxShape(btVector3(2.0, 1.0, 2.0));
   // f-16 mass 12000 kg fully loaded
-  rigidBody = createRigidBody(collisionShape, 12.0f, btVector3(0,0,0), 0);
+  const float mass = 2.0f;
+  collisionShape = new btBoxShape(btVector3(2.0, 1.0, 2.0));
+  btVector3 localInertia(0,0,0);
+  collisionShape->calculateLocalInertia(mass, localInertia);
+  rigidBody = createRigidBody(collisionShape, mass, btVector3(0,0,0), 0);
+  rigidBody->setActivationState(DISABLE_DEACTIVATION);
 }
 
 ShipPhysicsObject::~ShipPhysicsObject(){}
 
 void ShipPhysicsObject::applyForce(){
-  btTransform front = rigidBody->getCenterOfMassTransform();
-  btVector3 forward = btVector3(1,0,0);
-  forward = front(forward);
-  forward*=force;
+  btVector3 forward = getForward();
+  forward *= force;
   rigidBody->applyCentralForce(forward);
 }
 
@@ -25,11 +27,12 @@ void ShipPhysicsObject::applyRotationPitch(bool pitchUp){
   rigidBody->setCenterOfMassTransform(newTransform);
 }
 
-void ShipPhysicsObject::applyRotationYaw(bool pitchUp){
+void ShipPhysicsObject::applyRotationYaw(bool yawRight){
   float delta = degreeToRadian(10);
-  btQuaternion yawChange = btQuaternion(0, 0, delta*(pitchUp?1:-1));
+  btQuaternion yawChange = btQuaternion(delta*(yawRight?-1:1), 0, 0);
   btQuaternion newOrientation = rigidBody->getCenterOfMassTransform()*yawChange;
   btTransform newTransform = rigidBody->getCenterOfMassTransform();
   newTransform.setRotation(newOrientation);
   rigidBody->setCenterOfMassTransform(newTransform);
 }
+

@@ -15,10 +15,10 @@ class Ship: public GameObject{
         Ship();
         ~Ship();
 
-        // void thrust();
-        // void pitch(bool pitchUp);
-        // void yaw(bool yawRight);
-        // void fireDefaultWeapon();
+        void thrust();
+        void pitch(bool pitchUp);
+        void yaw(bool yawRight);
+        void fireDefaultWeapon();
         // void fireAuxiliaryWeapon();
 
         void draw() const;

@@ -25,10 +25,12 @@ HEADERS += menu/playablestate.h
 SOURCES += menu/playablestate.cpp
 
 # Utilities
-HEADERS += playableObjects/cubeSides.h
-SOURCES += playableObjects/cubeSides.cpp
-HEADERS += playableObjects/physicsObjects/invalidOperationException.h
-SOURCES += playableObjects/physicsObjects/invalidOperationException.cpp
+HEADERS += util/cubeSides.h
+SOURCES += util/cubeSides.cpp
+HEADERS += util/invalidOperationException.h
+SOURCES += util/invalidOperationException.cpp
+HEADERS += util/vector3.h
+SOURCES += util/vector3.cpp
 
 # Shapes
 HEADERS += playableObjects/gameObjects/shapes/cube.h
@@ -64,3 +66,9 @@ HEADERS += playableObjects/gameObjects/objectLoader/type.h
 
 HEADERS += playableObjects/gameObjects/ship.h
 SOURCES += playableObjects/gameObjects/ship.cpp
+
+# Control Objects
+HEADERS += playableObjects/controlObjects/shipControls.h
+SOURCES += playableObjects/controlObjects/shipControls.cpp
+HEADERS += playableObjects/controlObjects/playerShipControls.h
+SOURCES += playableObjects/controlObjects/playerShipControls.cpp

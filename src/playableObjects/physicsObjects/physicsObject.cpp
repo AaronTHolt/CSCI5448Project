@@ -13,8 +13,8 @@ btRigidBody* PhysicsObject::createRigidBody(btCollisionShape* shape, float mass,
   transform.setOrigin(pos);
   btQuaternion rot(btVector3(0,1,0), ry*PI/180.0);
   transform.setRotation(rot);
-  btDefaultMotionState* myMotionState = new btDefaultMotionState(transform);
-  btRigidBody::btRigidBodyConstructionInfo rbInfo(mass,myMotionState,shape,localInertia);
+  motionState = new btDefaultMotionState(transform);
+  btRigidBody::btRigidBodyConstructionInfo rbInfo(mass,motionState,shape,localInertia);
   return new btRigidBody(rbInfo);
 }
 
@@ -31,4 +31,28 @@ float PhysicsObject::radianToDegree(float radian){
 PhysicsObject::~PhysicsObject(){
   delete rigidBody;
   delete collisionShape;
+  delete motionState;
+}
+
+void PhysicsObject::getRotationMatrix(float * mat){
+  const int matDim = 16;
+  for(int i = 0; i < matDim; i++){
+    mat[i] = 0;
+  }
+  rigidBody->getCenterOfMassTransform().getOpenGLMatrix(mat);
+}
+
+const Vector3 PhysicsObject::getForward() const{
+  btTransform front = btTransform(rigidBody->getOrientation());
+  btVector3 forward = btVector3(0,0,1);
+  forward = front*forward;
+  return forward.normalize();
+}
+
+const Vector3 PhysicsObject::getPosition() const{
+  return rigidBody->getCenterOfMassPosition();
+}
+
+const Vector3 PhysicsObject::getVelocity() const{
+  return rigidBody->getLinearVelocity();
 }

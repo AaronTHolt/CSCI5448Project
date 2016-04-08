@@ -35,27 +35,34 @@ Ship::~Ship()
     delete f16;
 }
 
-// void Ship::thrust(){
-//     physicsObject->applyForce();
-// }
+void Ship::thrust(){
+  physicsObject->applyForce();
+}
 
-// void Ship::pitch(bool pitchUp){
-//     physicsObject->applyRotationPitch(pitchUp);
-// }
+void Ship::pitch(bool pitchUp){
+  physicsObject->applyRotationPitch(pitchUp);
+}
 
-// void Ship::yaw(bool yawRight){
-//     physicsObject->applyRotationYaw(yawRight);
-// }
+void Ship::yaw(bool yawRight){
+  physicsObject->applyRotationYaw(yawRight);
+}
 
-// void Ship::fireDefaultWeapon(){
-//     defaultWeapon->fire();
-// }
+void Ship::fireDefaultWeapon(){
+  // defaultWeapon->fire();
+}
 
 // void Ship::fireAuxiliaryWeapon(){
 //     auxiliaryWeapon->fire();
 // }
 
 void Ship::draw() const{
-    //see ex01 -> WaveOBJ.cpp
-    f16->display();
+  glPushMatrix();
+  float* rotMatrix = new float[16];
+  physicsObject->getRotationMatrix(rotMatrix);
+  glMultMatrixf(rotMatrix);
+  // glLoadMatrix(rotMatrix);
+  //see ex01 -> WaveOBJ.cpp
+  f16->display();
+  glPopMatrix();
+  delete rotMatrix;
 }

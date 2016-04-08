@@ -1,6 +1,8 @@
 #include "world.h"
 
 #include <memory>
+#include <iostream>
+#include <QGLWidget>
 
 void World::registerGameObject(GameObject* go){
   spaceObjects.push_back(go);
@@ -25,7 +27,22 @@ void World::draw() const{
   playerShip.draw();
 }
 
-World::World():boundary(),playerShip(){}
+void World::debugDraw(){
+  physicsWorld.debugDraw();
+}
+
+void World::stepWorld(){
+  physicsWorld.stepSim();
+}
+
+Ship* World::getPlayerShip(){
+  return &playerShip;
+}
+
+World::World():boundary(),playerShip(){
+  physicsWorld.registerGameObject(&boundary);
+  physicsWorld.registerGameObject(&playerShip);
+}
 
 World::~World(){
   for(GameObject* obj : spaceObjects){
