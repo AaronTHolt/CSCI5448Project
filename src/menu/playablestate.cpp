@@ -2,15 +2,25 @@
 
 PlayableState::PlayableState(QGLWidget* context) : GameState(context)
 {
+    mouse = false;
+
+    aspectRatio = 1;
+    dimension = 3;
+    fieldOfView = 55;
+    ph = 0;
+    th = 0;
+
     theWorld = World::getWorld();
-    if(auto spt = theWorld.lock()){
+    if(auto spt = theWorld.lock())
+    {
       playerControls = PlayerShipControls(spt->getPlayerShip());
     }
 }
 
 void PlayableState::draw()
 {
-    if (auto spt = theWorld.lock()) { // Has to be copied into a shared_ptr before usage
+    if (auto spt = theWorld.lock())  // Has to be copied into a shared_ptr before usage
+    {
         spt->stepWorld();
         spt->debugDraw();
         spt->draw();
@@ -23,7 +33,9 @@ void PlayableState::keyPressEvent(QKeyEvent* event)
     {
         GameStateContext* context = dynamic_cast<GameStateContext*>(gameStateContext);
         context->setState(context->Welcome);
-    }else{
+    }
+    else
+    {
       playerControls.keyPressEvent(event);
     }
 }

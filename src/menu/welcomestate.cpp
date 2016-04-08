@@ -3,6 +3,14 @@
 
 WelcomeState::WelcomeState(QGLWidget* context) : GameState(context)
 {
+    mouse = false;
+
+    aspectRatio = 1;
+    dimension = 3;
+    fieldOfView = 55;
+    ph = 0;
+    th = 0;
+
     title = new Cube(0.0, 2.1, 0.0,
                      2.5, 0.6, 0.1);
 

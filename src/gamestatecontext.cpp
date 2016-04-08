@@ -6,23 +6,8 @@ GameStateContext::GameStateContext()
     setFocusPolicy(Qt::StrongFocus);
 
     init = false;
-    mouse = false;
-
-    asp = 1;
-    dim = 3;
-    fov = 55;
-    ph = 0;
-    th = 0;
-
-    // initializeStates();
 
     currentGameState = Welcome;
-}
-
-
-void GameStateContext::draw()
-{
-    states.at(currentGameState)->draw();
 }
 
 void GameStateContext::setState(GameStates state)
@@ -82,7 +67,6 @@ void GameStateContext::initializeGL()
 
    initializeStates();
 
-
    //  Start 100 fps timer connected to updateGL
    timer.setInterval(10);
    connect(&timer,SIGNAL(timeout()),this,SLOT(updateGL()));
@@ -91,13 +75,15 @@ void GameStateContext::initializeGL()
 }
 
 void GameStateContext::resizeGL(int width, int height)
-{
-   //  Window aspect ration
-   asp = height ? width / (float)height : 1;
-   //  Viewport is whole screen
-   glViewport(0,0,width,height);
-   //  Set projection
-   Projection();
+{    
+    for (int i = 0; i < states.size(); ++i)
+    {
+        states.at(i)->setAspectRatio(width, height);
+    }
+    //  Viewport is whole screen
+    glViewport(0,0,width,height);
+    //  Set projection
+    Projection();
 }
 
 void GameStateContext::Projection()
@@ -105,53 +91,22 @@ void GameStateContext::Projection()
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
-    float zmin = dim / 4;
-    float zmax = 4 * dim;
-    float ydim = zmin * tan(fov * M_PI / 360.0);
-    float xdim = ydim * asp;
-    glFrustum(-xdim, +xdim, -ydim, +ydim, zmin, zmax);
+    states.at(currentGameState)->projection();
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    }
+}
 
 void GameStateContext::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    //  Set projection
     Projection();
-    //  Set view
-    glLoadIdentity();
-    if (fov) glTranslated(0, 0, -2 * dim);
-    glRotated(ph, 1, 0, 0);
-    glRotated(th, 0, 1, 0);
+    //glLoadIdentity();
 
-    //  Translate intensity to color vectors
-    float Ambient[]  = {0.3, 0.3 ,0.3, 1.0};
-    float Diffuse[]  = {0.8, 0.8, 0.8, 1.0};
-    float Specular[] = {1.0, 1.0, 1.0, 1.0};
-    float Position[] = {0.0, 5.0, 0.0, 1.0};
-
-    //  OpenGL should normalize normal vectors
-    glEnable(GL_NORMALIZE);
-    //  Enable lighting
-    glEnable(GL_LIGHTING);
-    //  glColor sets ambient and diffuse color materials
-    glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
-    glEnable(GL_COLOR_MATERIAL);
-    //  Enable light 0
-    glEnable(GL_LIGHT0);
-    //  Set ambient, diffuse, specular components and position of light 0
-    glLightfv(GL_LIGHT0,GL_AMBIENT, Ambient);
-    glLightfv(GL_LIGHT0,GL_DIFFUSE, Diffuse);
-    glLightfv(GL_LIGHT0,GL_SPECULAR, Specular);
-    glLightfv(GL_LIGHT0,GL_POSITION, Position);
-
-    draw();
-
-    //  Disable lighting
-    glDisable(GL_LIGHTING);
+    states.at(currentGameState)->view();
+    states.at(currentGameState)->lighting();
+    states.at(currentGameState)->draw();
 }
 
 void GameStateContext::keyPressEvent(QKeyEvent* event)
@@ -161,36 +116,20 @@ void GameStateContext::keyPressEvent(QKeyEvent* event)
 
 void GameStateContext::mousePressEvent(QMouseEvent* event)
 {
-   mouse = true;
-   pos = event->pos(); //  Remember mouse location
+    states.at(currentGameState)->mousePressEvent(event);
 }
 
-void GameStateContext::mouseReleaseEvent(QMouseEvent*)
+void GameStateContext::mouseReleaseEvent(QMouseEvent* event)
 {
-    mouse = false;
+    states.at(currentGameState)->mouseReleaseEvent(event);
 }
 
 void GameStateContext::mouseMoveEvent(QMouseEvent* event)
 {
-   if (mouse)
-   {
-      QPoint d = event->pos() - pos; //  Change in mouse location
-      th = (th + d.x()) % 360; //  Translate x movement to azimuth
-      ph = (ph + d.y()) % 360; //  Translate y movement to elevation
-      pos = event->pos(); //  Remember new location
-      updateGL(); //  Request redisplay
-   }
+   states.at(currentGameState)->mouseMoveEvent(event);
 }
 
-void GameStateContext::wheelEvent(QWheelEvent* e)
+void GameStateContext::wheelEvent(QWheelEvent* event)
 {
-   if (e->delta() < 0) //  Zoom out
-   {
-       dim += 0.1;
-   }
-   else if (dim > 1) //  Zoom in
-   {
-       dim -= 0.1;
-   }
-   updateGL();
+   states.at(currentGameState)->wheelEvent(event);
 }

@@ -28,18 +28,11 @@ public:
 
     GameStateContext();
 
-    void draw();
     void setState(GameStates);
     void exitApplication();
 
 private:
     bool init;
-    bool mouse;
-    int fov;
-    int ph;
-    int th;
-    double dim;
-    double asp;
 
     GameState* welcomeState;
     GameState* profileSelectState;
@@ -54,7 +47,6 @@ private:
 
     QTimer timer;
     QElapsedTimer time;
-    QPoint  pos;
 
     void initializeStates();
     void Projection();

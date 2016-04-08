@@ -10,8 +10,16 @@ class GameState
 {
 public:
     GameState(QGLWidget*);
+    void projection();
+    void view();
+    void lighting();
+    void setAspectRatio(int width, int height);
     virtual void draw() = 0;
     virtual void keyPressEvent(QKeyEvent*) = 0;
+    void mousePressEvent(QMouseEvent*);
+    void mouseReleaseEvent(QMouseEvent*);
+    void mouseMoveEvent(QMouseEvent*);
+    void wheelEvent(QWheelEvent*);
 
 protected:
     void highlightOption(int option);
@@ -21,6 +29,15 @@ protected:
     QVector<Cube*> selectableOptions;
 
     int selectedOption;
+
+    QPoint  pos;
+
+    bool mouse;
+    int fieldOfView;
+    int ph;
+    int th;
+    double dimension;
+    double aspectRatio;
 };
 
 #endif // _GAMESTATE_H
