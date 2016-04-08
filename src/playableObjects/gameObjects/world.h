@@ -27,7 +27,7 @@ class World{
   
  private:
   Boundary boundary;
-  
+  Ship playerShip;
   std::vector<GameObject*> spaceObjects;
   PhysicsWorld physicsWorld;
 
