@@ -24,7 +24,7 @@ void PlayableState::draw()
         spt->stepWorld();
         spt->debugDraw();
         spt->draw();
-        spt->playerShip.fireDefaultWeapon();
+        // spt->playerShip.fireDefaultWeapon();
     }
 }
 

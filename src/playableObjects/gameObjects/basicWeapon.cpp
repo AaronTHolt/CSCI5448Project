@@ -25,9 +25,11 @@ void BasicWeapon::returnBullet(){
 void BasicWeapon::fire(){
 
 	bulletCount -= 1;
+    // std::cout << bulletCount << std::endl;
 	// Cube* cc = new Cube(1,1,1,2,2,2,0);
  //    cc->draw();
 	//create new projectile
-	Bullet[bulletCount]->draw;
+	Bullet[bulletCount]->draw();
+    // Bullet[2]->draw();
 }
 

@@ -2,7 +2,7 @@
 #define _BASIC_WEAPON_H_
 
 #include "weapon.h"
-// #include "projectile.h"
+#include "projectile.h"
 
 class BasicWeapon: public Weapon{
 	private:

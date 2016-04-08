@@ -2,17 +2,21 @@
 #define _PROJECTILE_H_
 
 #include "weapon.h"
+#include "cube.h"
 
 class Projectile{
 	private:
-        bool isInPlay();
+        bool isInPlay;
     public:
-		Projectile();
+		Projectile(int t);
         ~Projectile();
-		void onCollision();
+		// void onCollision();
         void draw();
 
         Cube* proj;
+
+        void setIsInPlay(bool exists);
+        bool getIsInPlay();
 
 		
 
