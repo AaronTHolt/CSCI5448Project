@@ -14,9 +14,13 @@ public:
     virtual void keyPressEvent(QKeyEvent*) = 0;
 
 protected:
-    QGLWidget* gameStateContext;
+    void highlightOption(int option);
+    void restoreOption(int option);
 
-    Cube* cube;
+    QGLWidget* gameStateContext;
+    QVector<Cube*> selectableOptions;
+
+    int selectedOption;
 };
 
 #endif // _GAMESTATE_H

@@ -20,27 +20,6 @@ GameStateContext::GameStateContext()
 }
 
 
-void GameStateContext::initializeStates()
-{
-    welcomeState = new WelcomeState(this);
-    states.insert(Welcome, welcomeState);
-
-    profileSelectState = new ProfileSelectState(this);
-    states.insert(ProfileSelect, profileSelectState);
-
-    optionsState = new OptionsState(this);
-    states.insert(Options, optionsState);
-
-    levelSelectState = new LevelSelectState(this);
-    states.insert(LevelSelect, levelSelectState);
-
-    statsState = new StatsState(this);
-    states.insert(Stats, statsState);
-
-    playableState = new PlayableState(this);
-    states.insert(Playable, playableState);
-}
-
 void GameStateContext::draw()
 {
     states.at(currentGameState)->draw();
@@ -63,6 +42,32 @@ void GameStateContext::setState(GameStates state)
             break;
 
     }
+}
+
+void GameStateContext::exitApplication()
+{
+    QCoreApplication::quit();
+}
+
+void GameStateContext::initializeStates()
+{
+    welcomeState = new WelcomeState(this);
+    states.insert(Welcome, welcomeState);
+
+    profileSelectState = new ProfileSelectState(this);
+    states.insert(ProfileSelect, profileSelectState);
+
+    optionsState = new OptionsState(this);
+    states.insert(Options, optionsState);
+
+    levelSelectState = new LevelSelectState(this);
+    states.insert(LevelSelect, levelSelectState);
+
+    statsState = new StatsState(this);
+    states.insert(Stats, statsState);
+
+    playableState = new PlayableState(this);
+    states.insert(Playable, playableState);
 }
 
 void GameStateContext::initializeGL()

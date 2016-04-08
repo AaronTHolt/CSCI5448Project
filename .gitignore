@@ -48,3 +48,6 @@ bullet3-2.83.6
 # Common Temporary Files
 *~
 \#*\#
+
+# Qt User Files
+*.pro.user

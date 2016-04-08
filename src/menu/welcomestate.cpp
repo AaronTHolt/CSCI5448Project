@@ -26,7 +26,7 @@ WelcomeState::WelcomeState(QGLWidget* context) : GameState(context)
                         1.2, 0.3, 0.1);
     selectableOptions.append(exitGame);
 
-    selectedOption = 0;
+    selectedOption = PlayGame;
 
     highlightOption(selectedOption);
 }
@@ -39,7 +39,6 @@ void WelcomeState::draw()
     {
         selectableOptions.at(i)->draw();
     }
-
 }
 
 void WelcomeState::keyPressEvent(QKeyEvent* event)
@@ -61,19 +60,28 @@ void WelcomeState::keyPressEvent(QKeyEvent* event)
         selectedOption = selectedOption % selectableOptions.size();
         highlightOption(selectedOption);
     }
-    else if (event->key() == Qt::Key_Space)
+    else if (event->key() == Qt::Key_Return)
     {
         GameStateContext* context = dynamic_cast<GameStateContext*>(gameStateContext);
-        context->setState(context->Playable);
+        if (selectedOption == PlayGame)
+        {
+            context->setState(context->LevelSelect);
+        }
+        else if (selectedOption == ChangeProfile)
+        {
+            context->setState(context->ProfileSelect);
+        }
+        else if (selectedOption == Settings)
+        {
+            context->setState(context->Options);
+        }
+        else if (selectedOption == Stats)
+        {
+            context->setState(context->Stats);
+        }
+        else if (selectedOption == ExitGame)
+        {
+            context->exitApplication();
+        }
     }
-}
-
-void WelcomeState::highlightOption(int option)
-{
-    selectableOptions.at(option)->rotate(180.0);
-}
-
-void WelcomeState::restoreOption(int option)
-{
-    selectableOptions.at(option)->rotate(0.0);
 }

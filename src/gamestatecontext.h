@@ -30,6 +30,7 @@ public:
 
     void draw();
     void setState(GameStates);
+    void exitApplication();
 
 private:
     bool init;

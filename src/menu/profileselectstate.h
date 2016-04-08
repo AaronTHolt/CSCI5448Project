@@ -10,6 +10,16 @@ public:
     ProfileSelectState(QGLWidget*);
     void draw();
     void keyPressEvent(QKeyEvent*);
+
+private:
+    Cube* title;
+
+    Cube* returnToMenu;
+
+    enum options
+    {
+        ReturnToMenu = 0
+    };
 };
 
 #endif // _PROFILESELECTSTATE_H

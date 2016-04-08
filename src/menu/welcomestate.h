@@ -12,9 +12,6 @@ public:
     void keyPressEvent(QKeyEvent*);
 
 private:
-    void highlightOption(int option);
-    void restoreOption(int option);
-
     Cube* title;
 
     Cube* playGame;
@@ -22,9 +19,15 @@ private:
     Cube* settings;
     Cube* stats;
     Cube* exitGame;
-    QVector<Cube*> selectableOptions;
 
-    int selectedOption;
+    enum options
+    {
+        PlayGame = 0,
+        ChangeProfile = 1,
+        Settings = 2,
+        Stats = 3,
+        ExitGame = 4
+    };
 };
 
 #endif // _WELCOMESTATE_H
