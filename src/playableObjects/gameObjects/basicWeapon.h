@@ -6,7 +6,7 @@
 
 class BasicWeapon: public Weapon{
 	private:
-		unsigned int bulletCount = 3;
+		unsigned int bulletCount;
 		Projectile* Bullet[3];
 
 	public:
