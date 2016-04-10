@@ -5,7 +5,7 @@ PlayableState::PlayableState(QGLWidget* context) : GameState(context)
     mouse = false;
 
     aspectRatio = 1;
-    dimension = 3;
+    dimension = 15;
     fieldOfView = 55;
     ph = 0;
     th = 0;
@@ -14,6 +14,19 @@ PlayableState::PlayableState(QGLWidget* context) : GameState(context)
     if(auto spt = theWorld.lock())
     {
       playerControls = PlayerShipControls(spt->getPlayerShip());
+    }
+}
+
+void PlayableState::view()
+{
+    if(auto spt = theWorld.lock())
+    {
+      float* transform = new float[16];
+      spt->getPlayerShipTransform(transform);
+      glMultMatrixf(transform);
+      Vector3 shipForward = -2*spt->getPlayerShipForward();
+      glTranslatef(shipForward.getX(), shipForward.getY(), shipForward.getZ());
+      delete transform;
     }
 }
 

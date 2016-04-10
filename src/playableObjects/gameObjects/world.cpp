@@ -25,6 +25,8 @@ void World::draw() const{
     obj->draw();
   }
   playerShip.draw();
+
+  std::cout << glGetError() << std::endl;
 }
 
 void World::debugDraw(){
@@ -37,6 +39,14 @@ void World::stepWorld(){
 
 Ship* World::getPlayerShip(){
   return &playerShip;
+}
+
+void World::getPlayerShipTransform(float* matrix){
+  playerShip.getTransformMatrix(matrix);
+}
+
+const Vector3 World::getPlayerShipForward(){
+  return playerShip.getForward();
 }
 
 World::World():boundary(),playerShip(){

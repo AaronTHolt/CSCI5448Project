@@ -14,6 +14,7 @@ public:
     PlayableState(QGLWidget*);
     void draw();
     void keyPressEvent(QKeyEvent*);
+    void view();
 
 private:
     std::weak_ptr<World> theWorld;

@@ -24,6 +24,8 @@ class World{
 
   Ship* getPlayerShip();
   void stepWorld();
+  void getPlayerShipTransform(float* matrix);
+  const Vector3 getPlayerShipForward();
   
  private:
   Boundary boundary;

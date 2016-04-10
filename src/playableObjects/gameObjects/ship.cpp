@@ -66,3 +66,11 @@ void Ship::draw() const{
   glPopMatrix();
   delete rotMatrix;
 }
+
+const Vector3 Ship::getForward(){
+  return physicsObject->getForward();
+}
+
+void Ship::getTransformMatrix(float* matrix){
+  return physicsObject->getRotationMatrix(matrix);
+}

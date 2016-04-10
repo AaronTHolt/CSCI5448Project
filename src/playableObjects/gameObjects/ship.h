@@ -23,6 +23,9 @@ class Ship: public GameObject{
 
         void draw() const;
         // void draw(WaveOBJ* ship);
+
+	const Vector3 getForward();
+	void getTransformMatrix(float* matrix);
 };
 
 
