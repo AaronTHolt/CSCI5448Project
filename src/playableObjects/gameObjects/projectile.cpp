@@ -28,6 +28,10 @@ void Projectile::setIsInPlay(bool exists){
     isInPlay = exists;
 }
 
+bool Projectile::getIsInPlay(){
+    return isInPlay;
+}
+
 // Vector3 getPosition(){
 //     return position;
 // }
