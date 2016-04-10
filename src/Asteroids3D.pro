@@ -33,3 +33,5 @@ DEPENDPATH += BULLETDEPEND
 include(Sources.pro)
 
 RESOURCES = Asteroids.qrc
+
+QMAKE_CXXFLAGS += -O2
