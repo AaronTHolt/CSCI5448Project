@@ -41,3 +41,22 @@ float Vector3::getZ() const{
 Vector3::operator btVector3() const{
   return vec;
 }
+
+
+Vector3 Vector3::operator*(const float factor){
+  return vec * factor;
+}
+
+Vector3 Vector3::operator*=(const float factor){
+  vec *= factor;
+  return *this;
+}
+
+Vector3 Vector3::operator+(const Vector3& addend){
+  return vec + addend;
+}
+
+Vector3 Vector3::operator+=(const Vector3& addend){
+  vec += addend;
+  return *this;
+}

@@ -19,6 +19,17 @@ class Vector3{
   // Conversion operator to btVector3
   //  Warning this is an implicit operator
   operator btVector3() const;
+
+  // **********************************************
+  // Mathematical Operation to be defined as needed
+  // **********************************************
+
+  // Scalar Multiplication
+  Vector3 operator*(const float factor);
+  Vector3 operator*=(const float factor);
+  // Vector Addition
+  Vector3 operator+(const Vector3& addend);
+  Vector3 operator+=(const Vector3& addend);
   
  private:
   btVector3 vec;
