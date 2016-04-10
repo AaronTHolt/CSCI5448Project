@@ -50,8 +50,26 @@ void Ship::yaw(bool yawRight){
 }
 
 void Ship::fireDefaultWeapon(){
-    
-    basicWeapon->fire();
+    const Vector3* tempPosition;
+    tempPosition = new Vector3(physicsObject->getPosition());
+
+    const Vector3* tempForward;
+    tempForward = new Vector3(physicsObject->getForward());
+
+    const Vector3* tempVelocity;
+    tempVelocity = new Vector3(physicsObject->getVelocity());
+
+    // float x = temp->getX();
+    // float y = temp->getY();
+    // float z = temp->getZ();
+    // float fx = tempForward->getX();
+    // float fy = tempForward->getY();
+    // float fz = tempForward->getZ();
+    basicWeapon->fire(*tempPosition, *tempVelocity ,*tempForward);
+
+    delete tempPosition;
+    delete tempForward;
+    delete tempVelocity;
 }
 
 // void Ship::fireAuxiliaryWeapon(){
