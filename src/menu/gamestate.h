@@ -10,20 +10,20 @@ class GameState
 {
 public:
     GameState(QGLWidget*);
-    void projection();
-    void view();
-    void lighting();
-    void setAspectRatio(int width, int height);
+    virtual void projection();
+    virtual void view();
+    virtual void lighting();
+    virtual void setAspectRatio(int width, int height);
     virtual void draw() = 0;
     virtual void keyPressEvent(QKeyEvent*) = 0;
-    void mousePressEvent(QMouseEvent*);
-    void mouseReleaseEvent(QMouseEvent*);
-    void mouseMoveEvent(QMouseEvent*);
-    void wheelEvent(QWheelEvent*);
+    virtual void mousePressEvent(QMouseEvent*);
+    virtual void mouseReleaseEvent(QMouseEvent*);
+    virtual void mouseMoveEvent(QMouseEvent*);
+    virtual void wheelEvent(QWheelEvent*);
 
 protected:
-    void highlightOption(int option);
-    void restoreOption(int option);
+    virtual void highlightOption(int option);
+    virtual void restoreOption(int option);
 
     QGLWidget* gameStateContext;
     QVector<Cube*> selectableOptions;
