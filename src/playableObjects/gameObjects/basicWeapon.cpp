@@ -1,14 +1,18 @@
 #include "basicWeapon.h"
 #include "cube.h"
 #include "projectile.h"
+#include "physicsWorld.h"
+#include "ship.h"
+
 
 #include <iostream>
 
 BasicWeapon::BasicWeapon(): Weapon()
 {
-    for (unsigned int i=0; i<bulletCount; i++){
-        Bullet[i] = new Projectile(0);
-    }
+    bulletCount = 3;
+    // for (unsigned int i=0; i<bulletCount; i++){
+        
+    // }
 }
 
 BasicWeapon::~BasicWeapon(){
@@ -19,15 +23,32 @@ void BasicWeapon::returnBullet(){
 	//destroy collided projectile
 	// delete Bullet[bulletCount];
 
-	bulletCount += 1;
+    if (bulletCount < 3){
+        bulletCount += 1;
+    }
+	
 }
 
-void BasicWeapon::fire(){
+void BasicWeapon::fire(Vector3 p, Vector3 v, Vector3 f){
 
-	bulletCount -= 1;
+    if (bulletCount >= 1){
+        bulletCount -= 1;
 
-	//create new projectile
-	Bullet[bulletCount]->draw();
-    // Bullet[2]->draw();
+        Bullet[bulletCount] = new Projectile(0, v, p, f);
+
+        // std::cout << x << " " << y << " " << " " << z << std::endl;
+        // std::cout << x << " " << y << " " << " " << z << std::endl;
+
+        std::weak_ptr<World> theWorld;
+        theWorld = World::getWorld();
+
+        if (auto spt = theWorld.lock())  // Has to be copied into a shared_ptr before usage
+        {
+            spt->registerGameObject(Bullet[bulletCount]);
+        }
+    }
+	
+
+	
 }
 

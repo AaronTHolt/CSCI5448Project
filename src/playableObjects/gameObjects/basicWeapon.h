@@ -3,6 +3,9 @@
 
 #include "weapon.h"
 #include "projectile.h"
+#include "world.h"
+
+#include <memory>
 
 class BasicWeapon: public Weapon{
 	private:
@@ -13,7 +16,7 @@ class BasicWeapon: public Weapon{
 		BasicWeapon();
 		~BasicWeapon();
 
-		void fire();
+		void fire(Vector3 p, Vector3 v, Vector3 f);
 		void returnBullet();
 };
 
