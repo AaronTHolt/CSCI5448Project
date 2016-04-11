@@ -2,13 +2,20 @@
 #define _ASTEROID_H_
 
 #include "gameObject.h"
+#include "vector3.h"
+#include "waveOBJ.h"
+#include "asteroidPhysicsObject.h"
 
 class Asteroid: public GameObject{
     private:
         int asteroidSize;
+        WaveOBJ* asteroid;
 
     public:
-        void draw();
+        Asteroid(Vector3 p);
+        ~Asteroid();
+        void draw() const;
+        const Vector3* position;
 };
 
 

@@ -1,28 +1,42 @@
 #include "asteroid.h"
 
-Asteroid::Asteroid(){
+Asteroid::Asteroid(Vector3 p) : GameObject()
+{
+
+    position = &p; 
+    
+    physicsObject = new AsteroidPhysicsObject(1.5, *position);
+
     // suzanne the monkey head asteroid
-    WaveOBJ* suza=0;
+    asteroid=0;
     try
     {
-        suza = new WaveOBJ("suzanne.obj",":/");
+        asteroid = new WaveOBJ("suzanne.obj",":/");
     }
     catch (QString err)
     {
-        Fatal("Error loading object\n"+err);
+        // Fatal("Error loading object\n"+err);
+        // QMessageBox::critical(this,"Ship",err);
+        // QApplication::quit();
     }
 
     //Is this necessary/in the right place?
-    if (suza)
+    if (asteroid)
     {
-        suza->color(1,1,0);
-        objects.push_back(suza);
+        asteroid->color(0,1,1);
     }
-
-    //add timer? see ex01 -> ex01opengl.cpp
 }
 
-void Asteroid::draw(){
-    //see ex01 -> WaveOBJ.cpp
-    suza->display();
+Asteroid::~Asteroid(){
+    delete asteroid;
+}
+
+void Asteroid::draw() const{
+    glPushMatrix();
+    float* rotMatrix = new float[16];
+    physicsObject->getRotationMatrix(rotMatrix);
+    glMultMatrixf(rotMatrix);
+    asteroid->display();
+    glPopMatrix();
+    delete rotMatrix;
 }
