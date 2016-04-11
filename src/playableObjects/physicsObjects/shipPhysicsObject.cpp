@@ -3,7 +3,7 @@
 ShipPhysicsObject::ShipPhysicsObject(){
   // f-16 mass 12000 kg fully loaded
   const float mass = 2.0f;
-  collisionShape = new btBoxShape(btVector3(2.0, 1.0, 2.0));
+  collisionShape = new btBoxShape(btVector3(1.0, 0.5, 1.5));
   btVector3 localInertia(0,0,0);
   collisionShape->calculateLocalInertia(mass, localInertia);
   rigidBody = createRigidBody(collisionShape, mass, btVector3(0,0,0), 0);
