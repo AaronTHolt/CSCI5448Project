@@ -11,17 +11,17 @@ class Projectile: public GameObject{
 	private:
         bool isInPlay;
         int type;
+        int bulletNumber; //keep track of which bullet to delete
         
-
-
     public:
-		Projectile(int t, Vector3 p, Vector3 v, Vector3 f);
+		Projectile(int t, int bn, Vector3 p, Vector3 v, Vector3 f);
         ~Projectile();
 		// void onCollision();
         void draw() const;
         void setPosition(const Vector3* p);
         void setIsInPlay(bool exists);
         bool getIsInPlay();
+        int getBulletNumber();
 
         Cube* proj;
         const Vector3* position;

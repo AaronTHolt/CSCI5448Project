@@ -3,7 +3,7 @@
 #include <iostream>
 
 
-Projectile::Projectile(int t, Vector3 p, Vector3 v, Vector3 f) : GameObject()
+Projectile::Projectile(int t, int bn, Vector3 p, Vector3 v, Vector3 f) : GameObject()
 {
     velocity = &v; //Was going to be used to help determine starting velocity, but currently is not.
     p = p + 1.7*f;
@@ -12,6 +12,8 @@ Projectile::Projectile(int t, Vector3 p, Vector3 v, Vector3 f) : GameObject()
     forward = &f;
 
 	physicsObject = new ProjectilePhysicsObject(*position, *forward);
+
+    bulletNumber = bn;
 
     type = t;
     if (type == 0){
@@ -38,6 +40,10 @@ void Projectile::setIsInPlay(bool exists){
 
 bool Projectile::getIsInPlay(){
     return isInPlay;
+}
+
+int Projectile::getBulletNumber(){
+    return bulletNumber;
 }
 
 // Vector3 getPosition(){
