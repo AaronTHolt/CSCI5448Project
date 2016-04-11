@@ -1,4 +1,5 @@
 #include "world.h"
+#include "asteroid.h"
 
 #include <memory>
 #include <iostream>
@@ -42,6 +43,12 @@ Ship* World::getPlayerShip(){
 World::World():boundary(),playerShip(){
   physicsWorld.registerGameObject(&boundary);
   physicsWorld.registerGameObject(&playerShip);
+  
+  const Vector3* roid_pos;
+  roid_pos = new Vector3(2,2,2);
+  this->registerGameObject(new Asteroid(*roid_pos));
+
+
 }
 
 World::~World(){
