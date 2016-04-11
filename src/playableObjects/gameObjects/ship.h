@@ -3,10 +3,13 @@
 
 #include "gameObject.h"
 #include "objectLoader/waveOBJ.h"
+#include "weapon.h"
+
+
 
 class Ship: public GameObject{
     private:
-    //     Weapon defaultWeapon;
+        Weapon* basicWeapon;
     //     Weapon auxiliaryWeapon;
     //     Health health;
         // void Fatal(QString message);            //  Error handler
