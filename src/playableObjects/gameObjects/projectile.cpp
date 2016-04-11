@@ -46,13 +46,6 @@ int Projectile::getBulletNumber(){
     return bulletNumber;
 }
 
-// Vector3 getPosition(){
-//     return position;
-// }
-
-// Vector3 getVelocity(){
-//     return velcotiy;
-// }
 
 void Projectile::draw() const{
 
@@ -61,7 +54,6 @@ void Projectile::draw() const{
         const Vector3* temp;
         temp = new Vector3(physicsObject->getPosition());
         proj->translate(temp->getX(),temp->getY(),temp->getZ());
-    // std::cout << temp->getX() << temp->getY() << temp->getZ() << std::endl;
     }
 
     proj->draw();
