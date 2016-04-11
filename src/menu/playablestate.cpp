@@ -5,7 +5,7 @@ PlayableState::PlayableState(QGLWidget* context) : GameState(context)
     mouse = false;
 
     aspectRatio = 1;
-    dimension = 3;
+    dimension = 10;
     fieldOfView = 55;
     ph = 0;
     th = 0;

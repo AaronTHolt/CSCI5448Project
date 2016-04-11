@@ -1,9 +1,11 @@
 #include "shipPhysicsObject.h"
 
-ShipPhysicsObject::ShipPhysicsObject(){
+ShipPhysicsObject::ShipPhysicsObject(GameObject* go){
   // f-16 mass 12000 kg fully loaded
   const float mass = 2.0f;
   collisionShape = new btBoxShape(btVector3(1.0, 0.5, 1.5));
+  // Add a pointer to the calling GameObject for collisions
+  collisionShape->setUserPointer(go);
   btVector3 localInertia(0,0,0);
   collisionShape->calculateLocalInertia(mass, localInertia);
   rigidBody = createRigidBody(collisionShape, mass, btVector3(0,0,0), 0);

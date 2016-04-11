@@ -4,31 +4,54 @@
 
 #include <QGLWidget>
 
-Boundary::Boundary(){
+Boundary::Boundary(CubeSides side){
+  type = GameObjectType::Boundary;
   // Half lengths of the dimensions of the play area
-  double x = 500.0;
-  double y = 500.0;
-  double z = 500.0;  
+  x = dim;
+  y = dim;
+  z = dim;
+  float width = 0.5;
+  Vector3 pos;
+  switch(side){
+  case CubeSides::Top:
+    pos = Vector3(0,y,0);
+    y = width;
+    break;
+  case CubeSides::Bottom:
+    pos = Vector3(0,-y,0);
+    y = width;
+    break;
+  case CubeSides::Left:
+    pos = Vector3(-x,0,0);
+    x = width;
+    break;
+  case CubeSides::Right:
+    pos = Vector3(x,0,0);
+    x = width;
+    break;
+  case CubeSides::Front:
+    pos = Vector3(0,0,z);
+    z = width;
+    break;
+  case CubeSides::Back:
+    pos = Vector3(0,0,-z);
+    z = width;
+    break;
+  }
   // Construct the physics object for the boundary to the play area
-  physicsObject = new BoundaryPhysicsObject(x,y,z);
+  physicsObject = new BoundaryPhysicsObject(x,y,z, pos, this);
 
-  // Construct the Boundary objects for drawing
-  bounds[+CubeSides::Top] = new Cube(0,y,0, x,1,z, 0);
-  bounds[+CubeSides::Bottom] = new Cube(0,-y,0, x,1,z, 0);
-  bounds[+CubeSides::Left] = new Cube(-x,0,0, 1,y,z, 0);
-  bounds[+CubeSides::Right] = new Cube(x,0,0, 1,y,z, 0);
-  bounds[+CubeSides::Front] = new Cube(0,0,z, x,y,1, 0);
-  bounds[+CubeSides::Back] = new Cube(0,0,-z, x,y,1, 0);
+  // Construct the Boundary object for drawing
+  bound = new Cube(pos.getX(), pos.getY(), pos.getZ(), x,y,z, 0);
+}
+
+double Boundary::getDim(){
+  return dim;
 }
 
 Boundary::~Boundary(){
-  // Delete the bounds Cube objects
-  delete bounds[+CubeSides::Top];
-  delete bounds[+CubeSides::Bottom];
-  delete bounds[+CubeSides::Left];
-  delete bounds[+CubeSides::Right];
-  delete bounds[+CubeSides::Front];
-  delete bounds[+CubeSides::Back];
+  // Delete the bound Cube objects
+  delete bound;
 }
 
 void Boundary::draw() const{
@@ -37,7 +60,7 @@ void Boundary::draw() const{
 
   // Store Transform Matrix
   glPushMatrix();
-
+  /*
   // Draw the bounds
   bounds[+CubeSides::Top]->draw();
   bounds[+CubeSides::Bottom]->draw();
@@ -45,7 +68,11 @@ void Boundary::draw() const{
   bounds[+CubeSides::Right]->draw();
   bounds[+CubeSides::Front]->draw();
   bounds[+CubeSides::Back]->draw();
-
+  */
   // Restore Transform Matrix
   glPopMatrix();
+}
+
+bool Boundary::onCollision(GameObjectType got){
+  return false;
 }

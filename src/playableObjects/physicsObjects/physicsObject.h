@@ -1,4 +1,4 @@
- #ifndef _PHYSICS_OBJECT_H_
+#ifndef _PHYSICS_OBJECT_H_
 #define _PHYSICS_OBJECT_H_
 
 #include "vector3.h"
@@ -6,6 +6,9 @@
 #include "btBulletDynamicsCommon.h"
 
 #define PI 3.14159265
+
+// Tell a physics object that there is such a thing as a GameObject
+class GameObject;
 
 class PhysicsObject{
  public:

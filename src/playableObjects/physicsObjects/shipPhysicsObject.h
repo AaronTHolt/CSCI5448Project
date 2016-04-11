@@ -6,7 +6,7 @@
 
 class ShipPhysicsObject : public PhysicsObject{
  public:
-  ShipPhysicsObject();
+  ShipPhysicsObject(GameObject* go);
   ~ShipPhysicsObject();
 
   void applyForce();

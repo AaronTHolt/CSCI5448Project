@@ -1,6 +1,8 @@
 #ifndef _PHYSICS_WORLD_H_
 #define _PHYSICS_WORLD_H_
 
+#include <vector>
+
 #include "../gameObjects/gameObject.h"
 #include "../gameObjects/shapes/GLDebugDrawer.h"
 
@@ -22,6 +24,14 @@ class PhysicsWorld{
   btDynamicsWorld* world;
 
   btIDebugDraw* debugDrawer;
+
+  // ******************************************
+  // Near Callback and Object Interaction Rules
+  // ******************************************
+ private:
+  static void nearCallback(btBroadphasePair& collisionPair,
+		    btCollisionDispatcher& dispatcher,
+		    const btDispatcherInfo& dispatcherInfo);
 };
 
 #endif

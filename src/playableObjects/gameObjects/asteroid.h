@@ -16,6 +16,7 @@ class Asteroid: public GameObject{
         ~Asteroid();
         void draw() const;
         
+	bool onCollision(GameObjectType got);
 };
 
 

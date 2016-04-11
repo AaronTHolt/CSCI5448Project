@@ -2,7 +2,7 @@
 
 #include <chrono>
 
-AsteroidPhysicsObject::AsteroidPhysicsObject(float r, const Vector3& pos){
+AsteroidPhysicsObject::AsteroidPhysicsObject(float r, const Vector3& pos, GameObject* go){
   // Create Random Number Generator
   // obtain a seed from the system clock:
   unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
@@ -11,6 +11,9 @@ AsteroidPhysicsObject::AsteroidPhysicsObject(float r, const Vector3& pos){
   // Create necessary things for physics objects
   const float mass = 20.f;
   collisionShape = new btSphereShape(r);
+  // Add a pointer to the calling GameObject for collisions
+  collisionShape->setUserPointer(go);
+  // Calculates an objects inertia
   btVector3 localInertia(0,0,0);
   collisionShape->calculateLocalInertia(mass, localInertia);
   rigidBody = createRigidBody(collisionShape, mass, pos, 0);

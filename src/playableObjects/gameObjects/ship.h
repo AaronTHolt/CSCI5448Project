@@ -26,6 +26,8 @@ class Ship: public GameObject{
 
         void draw() const;
         // void draw(WaveOBJ* ship);
+
+	bool onCollision(GameObjectType got);
 };
 
 

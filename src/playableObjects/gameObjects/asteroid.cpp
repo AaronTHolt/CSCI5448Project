@@ -1,10 +1,11 @@
 #include "asteroid.h"
 
+
 Asteroid::Asteroid(Vector3 p) : GameObject()
 {
 
     physicsObject = new AsteroidPhysicsObject(1.5, p);
-
+    type = GameObjectType::Asteroid;
     // suzanne the monkey head asteroid
     asteroid=0;
     try
@@ -37,4 +38,13 @@ void Asteroid::draw() const{
     asteroid->display();
     glPopMatrix();
     delete rotMatrix;
+}
+
+bool Asteroid::onCollision(GameObjectType got){
+  if(GameObjectType::Asteroid == got){
+    return true;
+  }
+
+  return false;
+
 }

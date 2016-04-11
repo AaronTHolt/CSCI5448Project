@@ -9,8 +9,10 @@
 
 Ship::Ship() : GameObject()
 {
-    physicsObject = new ShipPhysicsObject();
     basicWeapon = new BasicWeapon();
+    type = GameObjectType::Ship;  
+    physicsObject = new ShipPhysicsObject(this);
+
 
     // F-16
     f16=nullptr;
@@ -69,4 +71,11 @@ void Ship::draw() const{
   f16->display();
   glPopMatrix();
   delete rotMatrix;
+}
+
+bool Ship::onCollision(GameObjectType got){
+  switch(got){
+  default:
+    return true;
+  }
 }

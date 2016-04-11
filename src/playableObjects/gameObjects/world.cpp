@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <iostream>
+#include <algorithm>
 #include <QGLWidget>
 
 void World::registerGameObject(GameObject* go){
@@ -21,7 +22,9 @@ void World::destroy(){
 }
 
 void World::draw() const{
-  boundary.draw();
+  for(int i = 0; i < NUMSIDES; i++){
+    boundary[i]->draw();
+  }
   for(const GameObject * const obj : spaceObjects){
     obj->draw();
   }
@@ -34,14 +37,47 @@ void World::debugDraw(){
 
 void World::stepWorld(){
   physicsWorld.stepSim();
+  clearOldObjects();
 }
 
 Ship* World::getPlayerShip(){
   return &playerShip;
 }
 
-World::World():boundary(),playerShip(){
-  physicsWorld.registerGameObject(&boundary);
+double World::getBoundaryDim() const{
+  return boundary[0]->getDim();
+}
+
+void World::deregisterGameObject(GameObject* go){
+  oldObjects.push_back(go);
+}
+
+void World::clearOldObjects(){
+  for(GameObject* go : oldObjects){
+    spaceObjects.erase(std::remove(spaceObjects.begin(),
+				   spaceObjects.end(),
+				   go),
+		       spaceObjects.end()
+		       );
+    delete go;
+  }
+  oldObjects.clear();
+}
+
+const std::vector<GameObject*> World::getGameObjects() const{
+  return spaceObjects;
+}
+
+World::World():playerShip(){
+  boundary[+CubeSides::Top] = new Boundary(CubeSides::Top);
+  boundary[+CubeSides::Bottom] = new Boundary(CubeSides::Bottom);
+  boundary[+CubeSides::Left] = new Boundary(CubeSides::Left);
+  boundary[+CubeSides::Right] = new Boundary(CubeSides::Right);
+  boundary[+CubeSides::Front] = new Boundary(CubeSides::Front);
+  boundary[+CubeSides::Back] = new Boundary(CubeSides::Back);
+  for(int i = 0; i < NUMSIDES; i++){
+    physicsWorld.registerGameObject(boundary[i]);
+  }
   physicsWorld.registerGameObject(&playerShip);
   
   this->registerGameObject(new Asteroid(Vector3(2,2,2)));
@@ -50,6 +86,10 @@ World::World():boundary(),playerShip(){
 }
 
 World::~World(){
+  for(int i = 0; i < NUMSIDES; i++){
+    delete boundary[i];
+  }
+  
   for(GameObject* obj : spaceObjects){
     delete obj;
   }

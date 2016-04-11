@@ -39,6 +39,7 @@ HEADERS += playableObjects/gameObjects/shapes/GLDebugDrawer.h
 SOURCES += playableObjects/gameObjects/shapes/GLDebugDrawer.cpp
 
 # Game Objects
+HEADERS += playableObjects/gameObjects/gameObjectType.h
 HEADERS += playableObjects/gameObjects/gameObject.h
 SOURCES += playableObjects/gameObjects/gameObject.cpp
 HEADERS += playableObjects/gameObjects/world.h

@@ -72,11 +72,11 @@ void GameState::mouseMoveEvent(QMouseEvent* event)
       QPoint d = event->pos() - pos; //  Change in mouse location
 
       th = th + d.x() / 2;  //  Translate x movement to azimuth
-      if (th > 10)
+      if (th > 360)
       {
           th = 10;
       }
-      else if (th < -10)
+      else if (th < -3600)
       {
           th = -10;
       }
