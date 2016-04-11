@@ -5,18 +5,13 @@
 
 Projectile::Projectile(int t, Vector3 p, Vector3 v, Vector3 f) : GameObject()
 {
-  // const Vector3 getForward() const;
-  // const Vector3 getPosition() const;
-  // const Vector3 getVelocity() const;
-    // velocity = new Vector3(1.0,1.0,1.0);
-    // position = new Vector3(1.0,0.0,0.0);
-    velocity = &v;
-    position = &p;
+    velocity = &v; //Was going to be used to help determine starting velocity, but currently is not.
+    p = p + 1.7*f;
+    position = &p; 
+    f = 7*f;
     forward = &f;
 
-    
-
-	physicsObject = new ProjectilePhysicsObject(*position, *velocity);
+	physicsObject = new ProjectilePhysicsObject(*position, *forward);
 
     type = t;
     if (type == 0){
