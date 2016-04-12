@@ -38,6 +38,18 @@ float Vector3::getZ() const{
   return vec.z();
 }
 
+void Vector3::setX(float x){
+  vec.setX(x);
+}
+
+void Vector3::setY(float y){
+  vec.setY(y);
+}
+
+void Vector3::setZ(float z){
+  vec.setZ(z);
+}
+
 Vector3::operator btVector3() const{
   return vec;
 }
