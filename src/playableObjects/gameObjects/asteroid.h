@@ -7,16 +7,26 @@
 #include "asteroidPhysicsObject.h"
 
 class Asteroid: public GameObject{
+    public:
+        enum class AsteroidSize{
+            Small,
+            Medium,
+            Large,
+        };
+
     private:
-        int asteroidSize;
+        AsteroidSize asteroidSize;
         WaveOBJ* asteroid;
+        void split();
+
 
     public:
-        Asteroid(Vector3 p);
+        Asteroid(Vector3 p, AsteroidSize size = AsteroidSize::Large);
         ~Asteroid();
         void draw() const;
-        
-	bool onCollision(GameObjectType got);
+	    bool onCollision(GameObjectType got);
+
+
 };
 
 
