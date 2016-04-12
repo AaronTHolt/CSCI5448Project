@@ -41,10 +41,11 @@ void Asteroid::draw() const{
 }
 
 bool Asteroid::onCollision(GameObjectType got){
-  if(GameObjectType::Asteroid == got){
+  switch(got){
+  case GameObjectType::Boundary:
+    warp(2.0);
+    return false;
+  default:
     return true;
   }
-
-  return false;
-
 }
