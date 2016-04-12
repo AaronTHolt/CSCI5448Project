@@ -10,7 +10,7 @@ Projectile::Projectile(int t, int bn, Vector3 p, Vector3 f) : GameObject()
     p = p + tempf;
     f = 7*f;
 
-	physicsObject = new ProjectilePhysicsObject(p, f);
+    physicsObject = new ProjectilePhysicsObject(p, f, this);
 
     bulletNumber = bn;
 

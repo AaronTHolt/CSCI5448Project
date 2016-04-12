@@ -6,7 +6,7 @@
 
 class ProjectilePhysicsObject : public PhysicsObject{
     public:
-        ProjectilePhysicsObject(const Vector3& position, const Vector3& velocity);
+        ProjectilePhysicsObject(const Vector3& position, const Vector3& velocity, GameObject* go);
         ~ProjectilePhysicsObject();
 
         void applyForce();
