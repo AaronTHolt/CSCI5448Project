@@ -6,7 +6,7 @@
 
 class GameObject{
  public:
-  virtual ~GameObject() = 0;
+  virtual ~GameObject();
   
   virtual void draw() const = 0;
 
