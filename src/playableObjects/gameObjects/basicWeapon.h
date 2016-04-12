@@ -18,7 +18,7 @@ class BasicWeapon: public Weapon{
 		BasicWeapon();
 		~BasicWeapon();
 
-		void fire(Vector3 p, Vector3 v, Vector3 f);
+		void fire(Vector3 p, Vector3 f);
 		void returnBullet(int bulletNumber);
         int getNextFreeBullet();
 };

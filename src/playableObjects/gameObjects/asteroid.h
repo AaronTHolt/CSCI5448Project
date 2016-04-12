@@ -15,7 +15,7 @@ class Asteroid: public GameObject{
         Asteroid(Vector3 p);
         ~Asteroid();
         void draw() const;
-        const Vector3* position;
+        
 };
 
 

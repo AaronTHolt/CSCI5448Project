@@ -3,21 +3,20 @@
 #include <iostream>
 
 
-Projectile::Projectile(int t, int bn, Vector3 p, Vector3 v, Vector3 f) : GameObject()
+Projectile::Projectile(int t, int bn, Vector3 p, Vector3 f) : GameObject()
 {
-    velocity = &v; //Was going to be used to help determine starting velocity, but currently is not.
-    p = p + 1.7*f;
-    position = &p; 
-    f = 7*f;
-    forward = &f;
 
-	physicsObject = new ProjectilePhysicsObject(*position, *forward);
+    Vector3 tempf = 1.7*f;
+    p = p + tempf;
+    f = 7*f;
+
+	physicsObject = new ProjectilePhysicsObject(p, f);
 
     bulletNumber = bn;
 
     type = t;
     if (type == 0){
-        proj = new Cube(position->getX(),position->getY(),position->getZ(),0.1,0.1,0.1,0);
+        proj = new Cube(p.getX(),p.getY(),p.getZ(),0.1,0.1,0.1,0);
     }
 	
 }
@@ -30,9 +29,7 @@ Projectile::~Projectile(){
 // 	weapon.returnBullet();
 // }
 
-void Projectile::setPosition(const Vector3* p){
-    position = p;
-}
+
 
 void Projectile::setIsInPlay(bool exists){
     isInPlay = exists;

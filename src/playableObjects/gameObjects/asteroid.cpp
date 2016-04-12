@@ -3,9 +3,7 @@
 Asteroid::Asteroid(Vector3 p) : GameObject()
 {
 
-    position = &p; 
-    
-    physicsObject = new AsteroidPhysicsObject(1.5, *position);
+    physicsObject = new AsteroidPhysicsObject(1.5, p);
 
     // suzanne the monkey head asteroid
     asteroid=0;

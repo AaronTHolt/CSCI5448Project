@@ -23,14 +23,14 @@ void BasicWeapon::returnBullet(int bulletNumber){
 	delete Bullet[bulletNumber]; //destroy collided projectile
 }
 
-void BasicWeapon::fire(Vector3 p, Vector3 v, Vector3 f){
+void BasicWeapon::fire(Vector3 p, Vector3 f){
 
 
     freeBullet = getNextFreeBullet();
     if (freeBullet < 0){ return; }
 
     freeBullets[freeBullet] = 1;
-    Bullet[freeBullet] = new Projectile(0, freeBullet, v, p, f);
+    Bullet[freeBullet] = new Projectile(0, freeBullet, p, f);
 
     std::weak_ptr<World> theWorld;
     theWorld = World::getWorld();

@@ -44,9 +44,7 @@ World::World():boundary(),playerShip(){
   physicsWorld.registerGameObject(&boundary);
   physicsWorld.registerGameObject(&playerShip);
   
-  const Vector3* roid_pos;
-  roid_pos = new Vector3(2,2,2);
-  this->registerGameObject(new Asteroid(*roid_pos));
+  this->registerGameObject(new Asteroid(Vector3(2,2,2)));
 
 
 }
