@@ -78,7 +78,7 @@ void PhysicsWorld::nearCallback(btBroadphasePair& collisionPair,
     std::cout << "There is a null object." << std::endl;
   }
   
-  if(nonNullObjects || (obj1DoesNormal && obj2DoesNormal)){
+  if(!nonNullObjects || (obj1DoesNormal && obj2DoesNormal)){
     // Do the normal Near Callback
     dispatcher.defaultNearCallback(collisionPair, dispatcher, dispatcherInfo);
   }
