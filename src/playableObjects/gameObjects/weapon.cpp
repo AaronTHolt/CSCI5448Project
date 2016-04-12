@@ -2,3 +2,5 @@
 
 Weapon::~Weapon(){}
 
+void Weapon::returnBullet(){}
+
