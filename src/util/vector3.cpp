@@ -44,7 +44,7 @@ Vector3::operator btVector3() const{
 
 
 Vector3 Vector3::operator*(const float factor){
-  return vec * factor;
+  return Vector3(vec * factor);
 }
 
 Vector3 Vector3::operator*=(const float factor){
@@ -53,7 +53,7 @@ Vector3 Vector3::operator*=(const float factor){
 }
 
 Vector3 Vector3::operator+(const Vector3& addend){
-  return vec + addend;
+  return Vector3(vec + addend);
 }
 
 Vector3 Vector3::operator+=(const Vector3& addend){
