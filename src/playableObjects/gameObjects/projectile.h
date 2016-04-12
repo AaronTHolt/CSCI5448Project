@@ -15,22 +15,12 @@ class Projectile: public GameObject{
         Cube* proj;
         
     public:
-		Projectile(int t, int bn, Vector3 p, Vector3 f);
+		Projectile(int t, Vector3 p, Vector3 f);
         ~Projectile();
 		// void onCollision();
         void draw() const;
         void setIsInPlay(bool exists);
         bool getIsInPlay();
-        int getBulletNumber();
-
-        
-
-
-        
-
-
-
-		
 
 };
 

@@ -3,7 +3,7 @@
 #include <iostream>
 
 
-Projectile::Projectile(int t, int bn, Vector3 p, Vector3 f) : GameObject()
+Projectile::Projectile(int t, Vector3 p, Vector3 f) : GameObject()
 {
 
     Vector3 tempf = 1.7*f;
@@ -11,8 +11,6 @@ Projectile::Projectile(int t, int bn, Vector3 p, Vector3 f) : GameObject()
     f = 7*f;
 
     physicsObject = new ProjectilePhysicsObject(p, f, this);
-
-    bulletNumber = bn;
 
     type = t;
     if (type == 0){
@@ -38,11 +36,6 @@ void Projectile::setIsInPlay(bool exists){
 bool Projectile::getIsInPlay(){
     return isInPlay;
 }
-
-int Projectile::getBulletNumber(){
-    return bulletNumber;
-}
-
 
 void Projectile::draw() const{
 
