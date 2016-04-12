@@ -25,7 +25,7 @@ void BasicWeapon::fire(Vector3 p, Vector3 f){
         return;
     }
 
-    Projectile *proj = new Projectile(0, p, f);
+    Projectile *proj = new Projectile(0, p, f, this);
 
     std::weak_ptr<World> theWorld;
     theWorld = World::getWorld();
