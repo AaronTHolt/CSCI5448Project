@@ -12,6 +12,7 @@ class PhysicsWorld{
   ~PhysicsWorld();
   
   void registerGameObject(GameObject* obj);
+  void deregisterGameObject(GameObject* obj);
   void stepSim();
 
   void debugDraw();

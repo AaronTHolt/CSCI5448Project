@@ -53,6 +53,10 @@ void PhysicsWorld::registerGameObject(GameObject* obj){
   world->addRigidBody(obj->getPhysicsObject().getRigidBody());
 }
 
+void PhysicsWorld::deregisterGameObject(GameObject* obj){
+  world->removeRigidBody(obj->getPhysicsObject().getRigidBody());
+}
+
 // Near Callback for the physics where interactions can be specified
 void PhysicsWorld::nearCallback(btBroadphasePair& collisionPair,
 				btCollisionDispatcher& dispatcher,
