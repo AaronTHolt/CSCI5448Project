@@ -20,6 +20,9 @@ class GameObject{
  protected:
   PhysicsObject* physicsObject;
   GameObjectType type;
+
+ protected:
+  void warp(double maxToCenter);
   
 };
 

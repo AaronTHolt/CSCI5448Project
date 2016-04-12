@@ -74,8 +74,11 @@ void Ship::draw() const{
 }
 
 bool Ship::onCollision(GameObjectType got){
-  switch(got){
-  default:
-    return true;
+  if(GameObjectType::Boundary == got){
+    std::cout << "Warping" << std::endl;
+    warp(4.0);
+    return false;
   }
+  // TODO: Needs to also take damage
+  return true;
 }

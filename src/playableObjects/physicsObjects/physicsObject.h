@@ -22,6 +22,8 @@ class PhysicsObject{
   const Vector3 getPosition() const;
   const Vector3 getVelocity() const;
   btRigidBody* getRigidBody();
+
+  void setPosition(Vector3& vec);
   
  protected:
   btCollisionShape* collisionShape;

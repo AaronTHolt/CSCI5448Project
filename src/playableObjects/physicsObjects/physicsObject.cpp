@@ -56,3 +56,9 @@ const Vector3 PhysicsObject::getPosition() const{
 const Vector3 PhysicsObject::getVelocity() const{
   return rigidBody->getLinearVelocity();
 }
+
+void PhysicsObject::setPosition(Vector3& vec){
+  btTransform transform = rigidBody->getCenterOfMassTransform();
+  transform.setOrigin(vec);
+  rigidBody->setCenterOfMassTransform(transform);
+}
