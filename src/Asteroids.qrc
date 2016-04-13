@@ -4,5 +4,6 @@
     <file alias="f-16.mtl">../resources/f-16/f-16.mtl</file>
     <file alias="suzanne.obj">../resources/suzanne/suzanne.obj</file>
     <file alias="suzanne.mtl">../resources/suzanne/suzanne.mtl</file>
+    <file alias="spaceSkybox.bmp">../resources/skybox/spaceSkybox.bmp</file>
 </qresource>
 </RCC>

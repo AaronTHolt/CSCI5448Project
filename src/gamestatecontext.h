@@ -27,6 +27,7 @@ public:
     };
 
     GameStateContext();
+    ~GameStateContext();
 
     void setState(GameStates);
     void exitApplication();

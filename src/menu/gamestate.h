@@ -38,6 +38,11 @@ protected:
     int th;
     double dimension;
     double aspectRatio;
+
+    unsigned int textures[1];
+
+    void loadTexture();
+    void sky(float D = 10);
 };
 
 #endif // _GAMESTATE_H
