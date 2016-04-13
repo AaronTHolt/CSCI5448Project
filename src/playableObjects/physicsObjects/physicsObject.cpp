@@ -49,6 +49,13 @@ const Vector3 PhysicsObject::getForward() const{
   return forward.normalize();
 }
 
+const Vector3 PhysicsObject::getUp() const{
+  btTransform change = btTransform(rigidBody->getOrientation());
+  btVector3 up = btVector3(0,1,0);
+  up = change*up;
+  return up.normalize();
+}
+
 const Vector3 PhysicsObject::getPosition() const{
   return rigidBody->getCenterOfMassPosition();
 }
