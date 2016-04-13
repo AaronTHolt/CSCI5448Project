@@ -54,10 +54,6 @@ const Vector3 World::getPlayerShipForward(){
   return playerShip.getForward();
 }
 
-World::World():boundary(),playerShip(){
-  physicsWorld.registerGameObject(&boundary);
-}
-
 double World::getBoundaryDim() const{
   return boundary[0]->getDim();
 }
