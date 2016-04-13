@@ -15,6 +15,7 @@ public:
     void draw();
     void keyPressEvent(QKeyEvent*);
     void view();
+    void projection();
 
 private:
     std::weak_ptr<World> theWorld;

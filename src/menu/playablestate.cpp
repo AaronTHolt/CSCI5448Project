@@ -19,17 +19,21 @@ PlayableState::PlayableState(QGLWidget* context) : GameState(context)
     }
 }
 
-void PlayableState::view()
+void PlayableState::projection()
 {
     if(auto spt = theWorld.lock())
     {
       float* transform = new float[16];
       spt->getPlayerShipTransform(transform);
       glMultMatrixf(transform);
-      Vector3 shipForward = -2*spt->getPlayerShipForward();
-      glTranslatef(shipForward.getX(), shipForward.getY(), shipForward.getZ());
+
       delete transform;
     }
+}
+
+void PlayableState::view()
+{
+
 }
 
 void PlayableState::draw()
