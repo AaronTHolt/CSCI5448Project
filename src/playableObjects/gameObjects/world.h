@@ -2,6 +2,7 @@
 #define _WORLD_H_
 
 #include <vector>
+#include <set>
 #include <memory>
 
 #include "gameObject.h"
@@ -38,7 +39,7 @@ class World{
   World();
 
   // Getting rid of old game objects
-  std::vector<GameObject*> oldObjects;
+  std::set<GameObject*> oldObjects;
   void clearOldObjects();
 
 };
