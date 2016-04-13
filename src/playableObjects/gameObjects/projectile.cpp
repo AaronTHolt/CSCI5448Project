@@ -1,33 +1,45 @@
 #include "projectile.h"
+#include "world.h"
 
 #include <iostream>
 
 
-Projectile::Projectile(int t, int bn, Vector3 p, Vector3 f) : GameObject()
+Projectile::Projectile(int t, Vector3 p, Vector3 f, Weapon* w) : GameObject()
 {
-
-    Vector3 tempf = 1.7*f;
+    this->w = w;
+    Vector3 tempf = 2.2*f;
     p = p + tempf;
     f = 7*f;
 
     physicsObject = new ProjectilePhysicsObject(p, f, this);
 
-    bulletNumber = bn;
-
+    proj = nullptr;
     type = t;
     if (type == 0){
-        proj = new Cube(p.getX(),p.getY(),p.getZ(),0.1,0.1,0.1,0);
+        proj = new Cube(0,0,0,0.1,0.1,0.1,0);
     }
 	
 }
 
 Projectile::~Projectile(){
-    delete proj;
+    if (proj != nullptr){
+        delete proj;
+    }
+    
 }
 
-// void Projectile::onCollision(){
-// 	weapon.returnBullet();
-// }
+bool Projectile::onCollision(GameObjectType got){
+    switch(got){
+        default:
+            if (w!=nullptr){
+                w->returnBullet();
+            }
+            World::getWorld().lock()->deregisterGameObject(this);
+            break;
+    }
+    return false;
+}
+
 
 
 
@@ -39,19 +51,13 @@ bool Projectile::getIsInPlay(){
     return isInPlay;
 }
 
-int Projectile::getBulletNumber(){
-    return bulletNumber;
-}
-
-
 void Projectile::draw() const{
 
-    // If basic weapon
-    if (type == 0){
-        const Vector3* temp;
-        temp = new Vector3(physicsObject->getPosition());
-        proj->translate(temp->getX(),temp->getY(),temp->getZ());
-    }
-
+    glPushMatrix();
+    float* rotMatrix = new float[16];
+    physicsObject->getRotationMatrix(rotMatrix);
+    glMultMatrixf(rotMatrix);
     proj->draw();
+    glPopMatrix();
+    delete rotMatrix;
 }

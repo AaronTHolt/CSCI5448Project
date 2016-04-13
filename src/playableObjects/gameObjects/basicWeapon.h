@@ -9,17 +9,15 @@
 
 class BasicWeapon: public Weapon{
 	private:
-		int bulletCount;
-		Projectile* Bullet[20];
-        int freeBullets[20]; //0=free, 1=used
-        int freeBullet;
+		const int bulletCount = 3;
+        int numFired = 0;
 
 	public:
 		BasicWeapon();
 		~BasicWeapon();
 
 		void fire(Vector3 p, Vector3 f);
-		void returnBullet(int bulletNumber);
+		void returnBullet();
         int getNextFreeBullet();
 };
 

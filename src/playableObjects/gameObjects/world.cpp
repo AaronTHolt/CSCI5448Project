@@ -59,6 +59,7 @@ void World::clearOldObjects(){
 				   go),
 		       spaceObjects.end()
 		       );
+    physicsWorld.deregisterGameObject(go);
     delete go;
   }
   oldObjects.clear();

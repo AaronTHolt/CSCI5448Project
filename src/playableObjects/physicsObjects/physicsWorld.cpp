@@ -53,6 +53,10 @@ void PhysicsWorld::registerGameObject(GameObject* obj){
   world->addRigidBody(obj->getPhysicsObject().getRigidBody());
 }
 
+void PhysicsWorld::deregisterGameObject(GameObject* obj){
+  world->removeRigidBody(obj->getPhysicsObject().getRigidBody());
+}
+
 // Near Callback for the physics where interactions can be specified
 void PhysicsWorld::nearCallback(btBroadphasePair& collisionPair,
 				btCollisionDispatcher& dispatcher,
@@ -74,7 +78,7 @@ void PhysicsWorld::nearCallback(btBroadphasePair& collisionPair,
     std::cout << "There is a null object." << std::endl;
   }
   
-  if(nonNullObjects || (obj1DoesNormal && obj2DoesNormal)){
+  if(!nonNullObjects || (obj1DoesNormal && obj2DoesNormal)){
     // Do the normal Near Callback
     dispatcher.defaultNearCallback(collisionPair, dispatcher, dispatcherInfo);
   }
