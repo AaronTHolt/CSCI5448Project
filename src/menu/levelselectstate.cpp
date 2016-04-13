@@ -2,6 +2,8 @@
 
 LevelSelectState::LevelSelectState(QGLWidget* context) : GameState(context)
 {
+    loadTexture();
+
     mouse = false;
 
     aspectRatio = 1;
@@ -28,6 +30,8 @@ LevelSelectState::LevelSelectState(QGLWidget* context) : GameState(context)
 
 void LevelSelectState::draw()
 {
+    sky();
+
     title->draw();
 
     for(int i = 0; i < selectableOptions.size(); ++i)

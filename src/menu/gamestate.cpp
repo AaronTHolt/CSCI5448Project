@@ -11,8 +11,8 @@ GameState::GameState(QGLWidget * context)
 
 void GameState::projection()
 {
-    float zmin = dimension / 4;
-    float zmax = 10 * dimension;
+    float zmin = dimension / 20;
+    float zmax = 20 * dimension;
     float ydim = zmin * tan(fieldOfView * M_PI / 360.0);
     float xdim = ydim * aspectRatio;
     glFrustum(-xdim, +xdim, -ydim, +ydim, zmin, zmax);
@@ -183,10 +183,10 @@ void GameState::sky(float D)
     glTexCoord2f(0.25,1.0); glVertex3f(-D,+D,-D);
 
     glNormal3f(0, 1, 0);
-    glTexCoord2f(0.25,0.25); glVertex3f(-D,-D,+D);
-    glTexCoord2f(0.5,0.25); glVertex3f(+D,-D,+D);
-    glTexCoord2f(0.5,0.5); glVertex3f(+D,-D,-D);
-    glTexCoord2f(0.25,0.5); glVertex3f(-D,-D,-D);
+    glTexCoord2f(0.25,0.5); glVertex3f(+D,-D,-D);
+    glTexCoord2f(0.5,0.5); glVertex3f(+D,-D,+D);
+    glTexCoord2f(0.5,0.25); glVertex3f(-D,-D,+D);
+    glTexCoord2f(0.25,0.25); glVertex3f(-D,-D,-D);
     glEnd();
 
     glDisable(GL_TEXTURE_2D);

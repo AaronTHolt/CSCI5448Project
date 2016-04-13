@@ -2,6 +2,8 @@
 
 PlayableState::PlayableState(QGLWidget* context) : GameState(context)
 {
+    loadTexture();
+
     mouse = false;
 
     aspectRatio = 1;
@@ -19,6 +21,8 @@ PlayableState::PlayableState(QGLWidget* context) : GameState(context)
 
 void PlayableState::draw()
 {
+    sky(100);
+
     if (auto spt = theWorld.lock())  // Has to be copied into a shared_ptr before usage
     {
         spt->stepWorld();

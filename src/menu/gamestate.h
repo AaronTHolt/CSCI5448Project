@@ -42,7 +42,7 @@ protected:
     unsigned int textures[1];
 
     void loadTexture();
-    void sky(float D = 10);
+    void sky(float D = 20);
 };
 
 #endif // _GAMESTATE_H
