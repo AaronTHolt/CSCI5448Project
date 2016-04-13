@@ -32,6 +32,8 @@ Projectile::~Projectile(){
 
 bool Projectile::onCollision(GameObjectType got){
     switch(got){
+        case GameObjectType::Ship:
+            return true;
         default:
             if (w!=nullptr){
                 w->returnBullet();
