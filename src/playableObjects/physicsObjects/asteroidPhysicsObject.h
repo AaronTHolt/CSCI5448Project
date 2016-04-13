@@ -7,7 +7,7 @@
 
 class AsteroidPhysicsObject : public PhysicsObject{
  public:
-  AsteroidPhysicsObject(float radius, const Vector3& position);
+  AsteroidPhysicsObject(float radius, const Vector3& position, GameObject* go);
   ~AsteroidPhysicsObject();
 
   void applyForce();

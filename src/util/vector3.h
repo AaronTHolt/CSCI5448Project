@@ -15,6 +15,9 @@ class Vector3{
   float getX() const;
   float getY() const;
   float getZ() const;
+  void setX(float x);
+  void setY(float y);
+  void setZ(float z);
 
   // Conversion operator to btVector3
   //  Warning this is an implicit operator

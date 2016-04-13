@@ -3,13 +3,15 @@
 
 #include "physicsObject.h"
 
-class ProjectilePhysicsObject : PhysicsObject{
-  ProjectilePhysicsObject(const Vector3& position, const Vector3& velocity);
-  ~ProjectilePhysicsObject();
 
-  void applyForce();
-  void applyRotationPitch(bool pitchUp);
-  void applyRotationYaw(bool yawRight);
+class ProjectilePhysicsObject : public PhysicsObject{
+    public:
+        ProjectilePhysicsObject(const Vector3& position, const Vector3& velocity, GameObject* go);
+        ~ProjectilePhysicsObject();
+
+        void applyForce();
+        void applyRotationPitch(bool pitchUp);
+        void applyRotationYaw(bool yawRight);
   
 };
 

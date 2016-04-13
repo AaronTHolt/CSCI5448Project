@@ -3,10 +3,13 @@
 
 #include "gameObject.h"
 #include "objectLoader/waveOBJ.h"
+#include "weapon.h"
+
+
 
 class Ship: public GameObject{
     private:
-    //     Weapon defaultWeapon;
+        Weapon* basicWeapon;
     //     Weapon auxiliaryWeapon;
     //     Health health;
         // void Fatal(QString message);            //  Error handler
@@ -26,6 +29,9 @@ class Ship: public GameObject{
 
 	const Vector3 getForward();
 	void getTransformMatrix(float* matrix);
+
+	bool onCollision(GameObjectType got);
+
 };
 
 

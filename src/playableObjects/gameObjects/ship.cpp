@@ -1,6 +1,7 @@
 #include "ship.h"
 #include "objectLoader/waveOBJ.h"
 #include "shipPhysicsObject.h"
+#include "basicWeapon.h"
 
 #include <QString>
 #include <QMessageBox>
@@ -8,7 +9,10 @@
 
 Ship::Ship() : GameObject()
 {
-    physicsObject = new ShipPhysicsObject();
+    basicWeapon = new BasicWeapon();
+    type = GameObjectType::Ship;  
+    physicsObject = new ShipPhysicsObject(this);
+
 
     // F-16
     f16=nullptr;
@@ -48,7 +52,9 @@ void Ship::yaw(bool yawRight){
 }
 
 void Ship::fireDefaultWeapon(){
-  // defaultWeapon->fire();
+    const Vector3 tempPosition = physicsObject->getPosition();
+    const Vector3 tempForward = physicsObject->getForward();
+    basicWeapon->fire(tempPosition,tempForward);
 }
 
 // void Ship::fireAuxiliaryWeapon(){
@@ -73,4 +79,14 @@ const Vector3 Ship::getForward(){
 
 void Ship::getTransformMatrix(float* matrix){
   return physicsObject->getRotationMatrix(matrix);
+}
+
+bool Ship::onCollision(GameObjectType got){
+  if(GameObjectType::Boundary == got){
+    std::cout << "Warping" << std::endl;
+    warp(4.0);
+    return false;
+  }
+  // TODO: Needs to also take damage
+  return true;
 }

@@ -1,5 +1,4 @@
 #include "gamestatecontext.h"
-#include <iostream>
 
 GameStateContext::GameStateContext()
 {
@@ -8,6 +7,11 @@ GameStateContext::GameStateContext()
     init = false;
 
     currentGameState = Welcome;
+}
+
+GameStateContext::~GameStateContext()
+{
+
 }
 
 void GameStateContext::setState(GameStates state)

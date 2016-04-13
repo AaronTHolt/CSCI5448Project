@@ -11,8 +11,8 @@ GameState::GameState(QGLWidget * context)
 
 void GameState::projection()
 {
-    float zmin = dimension / 4;
-    float zmax = 4 * dimension;
+    float zmin = dimension / 20;
+    float zmax = 20 * dimension;
     float ydim = zmin * tan(fieldOfView * M_PI / 360.0);
     float xdim = ydim * aspectRatio;
     glFrustum(-xdim, +xdim, -ydim, +ydim, zmin, zmax);
@@ -115,4 +115,80 @@ void GameState::highlightOption(int option)
 void GameState::restoreOption(int option)
 {
     selectableOptions.at(option)->rotate(0.0);
+}
+
+void GameState::loadTexture()
+{
+    QImage img;
+    if( ! img.load(":/spaceSkybox.bmp") )
+    {
+        qDebug("Error loading image");
+        exit(1);
+    }
+
+    QImage GL_formatted_image;
+    GL_formatted_image = QGLWidget::convertToGLFormat(img);
+    if( GL_formatted_image.isNull() )
+    {
+        qDebug("Error with GL_formatted_image");
+        exit(1);
+    }
+    glGenTextures(1, textures);
+    glBindTexture(GL_TEXTURE_2D, textures[0]);
+    glTexImage2D( GL_TEXTURE_2D, 0, GL_RGBA,
+            GL_formatted_image.width(), GL_formatted_image.height(),
+            0, GL_RGBA, GL_UNSIGNED_BYTE, GL_formatted_image.bits() );
+    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
+    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+}
+
+void GameState::sky(float D)
+{
+    glPushMatrix();
+
+    glColor3f(1,1,1);
+    glEnable(GL_TEXTURE_2D);
+
+    glBindTexture( GL_TEXTURE_2D, textures[0] );
+
+    glBegin(GL_QUADS);
+    glNormal3f(0, 0, 1);
+    glTexCoord2f(0.0,0.5); glVertex3f(-D,-D,-D);
+    glTexCoord2f(0.25,0.5); glVertex3f(+D,-D,-D);
+    glTexCoord2f(0.25,0.75); glVertex3f(+D,+D,-D);
+    glTexCoord2f(0.0,0.75); glVertex3f(-D,+D,-D);
+
+    glNormal3f(-1, 0, 0);
+    glTexCoord2f(0.25,0.5); glVertex3f(+D,-D,-D);
+    glTexCoord2f(0.5,0.5); glVertex3f(+D,-D,+D);
+    glTexCoord2f(0.5,0.75); glVertex3f(+D,+D,+D);
+    glTexCoord2f(0.25,0.75); glVertex3f(+D,+D,-D);
+
+    glNormal3f(0, 0, -1);
+    glTexCoord2f(0.5,0.5); glVertex3f(+D,-D,+D);
+    glTexCoord2f(0.75,0.5); glVertex3f(-D,-D,+D);
+    glTexCoord2f(0.75,0.75); glVertex3f(-D,+D,+D);
+    glTexCoord2f(0.5,0.75); glVertex3f(+D,+D,+D);
+
+    glNormal3f(1, 0, 0);
+    glTexCoord2f(0.75,0.5); glVertex3f(-D,-D,+D);
+    glTexCoord2f(1.0,0.5); glVertex3f(-D,-D,-D);
+    glTexCoord2f(1.0,0.75); glVertex3f(-D,+D,-D);
+    glTexCoord2f(0.75,0.75); glVertex3f(-D,+D,+D);
+
+    glNormal3f(0, -1, 0);
+    glTexCoord2f(0.25,0.75); glVertex3f(+D,+D,-D);
+    glTexCoord2f(0.5,0.75); glVertex3f(+D,+D,+D);
+    glTexCoord2f(0.5,1.0); glVertex3f(-D,+D,+D);
+    glTexCoord2f(0.25,1.0); glVertex3f(-D,+D,-D);
+
+    glNormal3f(0, 1, 0);
+    glTexCoord2f(0.25,0.5); glVertex3f(+D,-D,-D);
+    glTexCoord2f(0.5,0.5); glVertex3f(+D,-D,+D);
+    glTexCoord2f(0.5,0.25); glVertex3f(-D,-D,+D);
+    glTexCoord2f(0.25,0.25); glVertex3f(-D,-D,-D);
+    glEnd();
+
+    glDisable(GL_TEXTURE_2D);
+    glPopMatrix();
 }

@@ -2,13 +2,31 @@
 #define _ASTEROID_H_
 
 #include "gameObject.h"
+#include "vector3.h"
+#include "waveOBJ.h"
+#include "asteroidPhysicsObject.h"
 
 class Asteroid: public GameObject{
+    public:
+        enum class AsteroidSize{
+            Small,
+            Medium,
+            Large,
+        };
+
     private:
-        int asteroidSize;
+        AsteroidSize asteroidSize;
+        WaveOBJ* asteroid;
+        void split();
+
 
     public:
-        void draw();
+        Asteroid(Vector3 p, AsteroidSize size = AsteroidSize::Large);
+        ~Asteroid();
+        void draw() const;
+	    bool onCollision(GameObjectType got);
+
+
 };
 
 

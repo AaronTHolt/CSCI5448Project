@@ -38,13 +38,25 @@ float Vector3::getZ() const{
   return vec.z();
 }
 
+void Vector3::setX(float x){
+  vec.setX(x);
+}
+
+void Vector3::setY(float y){
+  vec.setY(y);
+}
+
+void Vector3::setZ(float z){
+  vec.setZ(z);
+}
+
 Vector3::operator btVector3() const{
   return vec;
 }
 
 
 Vector3 Vector3::operator*(const float factor){
-  return vec * factor;
+  return Vector3(vec * factor);
 }
 
 Vector3 Vector3::operator*=(const float factor){
@@ -53,7 +65,7 @@ Vector3 Vector3::operator*=(const float factor){
 }
 
 Vector3 Vector3::operator+(const Vector3& addend){
-  return vec + addend;
+  return Vector3(vec + addend);
 }
 
 Vector3 Vector3::operator+=(const Vector3& addend){

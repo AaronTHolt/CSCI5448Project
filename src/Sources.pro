@@ -39,6 +39,7 @@ HEADERS += playableObjects/gameObjects/shapes/GLDebugDrawer.h
 SOURCES += playableObjects/gameObjects/shapes/GLDebugDrawer.cpp
 
 # Game Objects
+HEADERS += playableObjects/gameObjects/gameObjectType.h
 HEADERS += playableObjects/gameObjects/gameObject.h
 SOURCES += playableObjects/gameObjects/gameObject.cpp
 HEADERS += playableObjects/gameObjects/world.h
@@ -60,18 +61,34 @@ SOURCES += playableObjects/physicsObjects/asteroidPhysicsObject.cpp
 HEADERS += playableObjects/physicsObjects/projectilePhysicsObject.h
 SOURCES += playableObjects/physicsObjects/projectilePhysicsObject.cpp
 
-#Ship
+#Obj loader
 HEADERS += playableObjects/gameObjects/objectLoader/object.h
 SOURCES += playableObjects/gameObjects/objectLoader/object.cpp
 HEADERS += playableObjects/gameObjects/objectLoader/waveOBJ.h
 SOURCES += playableObjects/gameObjects/objectLoader/waveOBJ.cpp
 HEADERS += playableObjects/gameObjects/objectLoader/type.h
 
+#Weapon
+SOURCES += playableObjects/gameObjects/weapon.cpp
+HEADERS += playableObjects/gameObjects/weapon.h
+SOURCES += playableObjects/gameObjects/basicWeapon.cpp
+HEADERS += playableObjects/gameObjects/basicWeapon.h
+SOURCES += playableObjects/gameObjects/projectile.cpp
+HEADERS += playableObjects/gameObjects/projectile.h
+
+#Ship
 HEADERS += playableObjects/gameObjects/ship.h
 SOURCES += playableObjects/gameObjects/ship.cpp
+
+#Asteroid
+HEADERS += playableObjects/gameObjects/asteroid.h
+SOURCES += playableObjects/gameObjects/asteroid.cpp
 
 # Control Objects
 HEADERS += playableObjects/controlObjects/shipControls.h
 SOURCES += playableObjects/controlObjects/shipControls.cpp
 HEADERS += playableObjects/controlObjects/playerShipControls.h
 SOURCES += playableObjects/controlObjects/playerShipControls.cpp
+
+
+
