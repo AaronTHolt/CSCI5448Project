@@ -1,9 +1,6 @@
 # The files that qmake should build
 
 # Template
-HEADERS +=
-SOURCES +=
-
 SOURCES += main.cpp
 HEADERS += mainwindow.h
 SOURCES += mainwindow.cpp
@@ -23,6 +20,8 @@ HEADERS += menu/statsstate.h
 SOURCES += menu/statsstate.cpp
 HEADERS += menu/playablestate.h
 SOURCES += menu/playablestate.cpp
+HEADERS += menu/menuitem.h
+SOURCES += menu/menuitem.cpp
 
 # Utilities
 HEADERS += util/cubeSides.h

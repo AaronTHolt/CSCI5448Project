@@ -109,37 +109,47 @@ void GameState::wheelEvent(QWheelEvent* e)
 
 void GameState::highlightOption(int option)
 {
-    selectableOptions.at(option)->rotate(180.0);
+    highlight->setDimension(selectableOptions.at(option)->getWidth() * 1.2,
+                            selectableOptions.at(option)->getHeight() * 1.2);
+
+    highlight->setPosition(selectableOptions.at(option)->getPositionX(),
+                           selectableOptions.at(option)->getPositionY(),
+                           selectableOptions.at(option)->getPositionZ() - 0.1);
 }
 
-void GameState::restoreOption(int option)
+QImage GameState::loadImage(QString name)
 {
-    selectableOptions.at(option)->rotate(0.0);
-}
-
-void GameState::loadTexture()
-{
-    QImage img;
-    if( ! img.load(":/spaceSkybox.bmp") )
+    QImage image;
+    if(!image.load(name))
     {
-        qDebug("Error loading image");
+        qDebug() << "Error loading image: " << name;
         exit(1);
     }
 
-    QImage GL_formatted_image;
-    GL_formatted_image = QGLWidget::convertToGLFormat(img);
-    if( GL_formatted_image.isNull() )
+    QImage formatted_image;
+    formatted_image = QGLWidget::convertToGLFormat(image);
+    if(formatted_image.isNull())
     {
-        qDebug("Error with GL_formatted_image");
+        qDebug("Error with formatted_image");
         exit(1);
     }
-    glGenTextures(1, textures);
-    glBindTexture(GL_TEXTURE_2D, textures[0]);
-    glTexImage2D( GL_TEXTURE_2D, 0, GL_RGBA,
-            GL_formatted_image.width(), GL_formatted_image.height(),
-            0, GL_RGBA, GL_UNSIGNED_BYTE, GL_formatted_image.bits() );
-    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
-    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+    return formatted_image;
+}
+
+unsigned int GameState::loadTexture(QString name)
+{
+    unsigned int texture;
+
+    QImage formatted_image = loadImage(name);
+
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
+            formatted_image.width(), formatted_image.height(),
+            0, GL_RGBA, GL_UNSIGNED_BYTE, formatted_image.bits());
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    return texture;
 }
 
 void GameState::sky(float D)
@@ -149,7 +159,7 @@ void GameState::sky(float D)
     glColor3f(1,1,1);
     glEnable(GL_TEXTURE_2D);
 
-    glBindTexture( GL_TEXTURE_2D, textures[0] );
+    glBindTexture( GL_TEXTURE_2D, skyTexture );
 
     glBegin(GL_QUADS);
     glNormal3f(0, 0, 1);

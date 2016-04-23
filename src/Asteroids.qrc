@@ -2,8 +2,20 @@
 <qresource>
     <file alias="f-16.obj">../resources/f-16/f-16.obj</file>
     <file alias="f-16.mtl">../resources/f-16/f-16.mtl</file>
+
     <file alias="suzanne.obj">../resources/suzanne/suzanne.obj</file>
     <file alias="suzanne.mtl">../resources/suzanne/suzanne.mtl</file>
+
     <file alias="spaceSkybox.bmp">../resources/skybox/spaceSkybox.bmp</file>
+
+    <file alias="title.bmp">../resources/menus/title.bmp</file>
+    <file alias="highlight.bmp">../resources/menus/highlight.bmp</file>
+    <file alias="play_game.bmp">../resources/menus/play_game.bmp</file>
+    <file alias="change_profile.bmp">../resources/menus/change_profile.bmp</file>
+    <file alias="settings.bmp">../resources/menus/settings.bmp</file>
+    <file alias="stats.bmp">../resources/menus/stats.bmp</file>
+    <file alias="exit_game.bmp">../resources/menus/exit_game.bmp</file>
+    <file alias="level_select.bmp">../resources/menus/level_select.bmp</file>
+    <file alias="return_to_menu.bmp">../resources/menus/return_to_menu.bmp</file>
 </qresource>
 </RCC>

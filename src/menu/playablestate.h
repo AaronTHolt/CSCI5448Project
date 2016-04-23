@@ -25,6 +25,8 @@ private:
     double degreeToRadian(double degree);
     double radianToDegree(double radian);
 
+    void loadTextures();
+
     std::weak_ptr<World> theWorld;
     PlayerShipControls playerControls;
 

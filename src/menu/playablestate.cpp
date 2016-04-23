@@ -2,7 +2,7 @@
 
 PlayableState::PlayableState(QGLWidget* context) : GameState(context)
 {
-    loadTexture();
+    loadTextures();
 
     mouse = false;
 
@@ -79,4 +79,9 @@ double PlayableState::degreeToRadian(double degree)
 double PlayableState::radianToDegree(double radian)
 {
   return radian * 180.0 / M_PI;
+}
+
+void PlayableState::loadTextures()
+{
+    skyTexture = loadTexture(":/spaceSkybox.bmp");
 }

@@ -3,6 +3,7 @@
 
 #include "gamestate.h"
 #include "gamestatecontext.h"
+#include "menuitem.h"
 
 class WelcomeState : public GameState
 {
@@ -12,13 +13,11 @@ public:
     void keyPressEvent(QKeyEvent*);
 
 private:
-    Cube* title;
-
-    Cube* playGame;
-    Cube* changeProfile;
-    Cube* settings;
-    Cube* stats;
-    Cube* exitGame;
+    MenuItem* playGame;
+    MenuItem* changeProfile;
+    MenuItem* settings;
+    MenuItem* stats;
+    MenuItem* exitGame;
 
     enum options
     {
@@ -28,6 +27,9 @@ private:
         Stats = 3,
         ExitGame = 4
     };
+
+    void loadTextures();
+    unsigned int textures[7];
 };
 
 #endif // _WELCOMESTATE_H

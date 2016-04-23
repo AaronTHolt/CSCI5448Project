@@ -3,7 +3,10 @@
 
 #include <QGLWidget>
 #include <QtOpenGL>
+#include <QString>
+#include <QImage>
 
+#include "menuitem.h"
 #include "cube.h"
 
 class GameState
@@ -23,12 +26,14 @@ public:
 
 protected:
     virtual void highlightOption(int option);
-    virtual void restoreOption(int option);
 
     QGLWidget* gameStateContext;
-    QVector<Cube*> selectableOptions;
+    QVector<MenuItem*> selectableOptions;
 
     int selectedOption;
+
+    MenuItem* title;
+    MenuItem* highlight;
 
     QPoint  pos;
 
@@ -39,10 +44,15 @@ protected:
     double dimension;
     double aspectRatio;
 
-    unsigned int textures[1];
+    unsigned int skyTexture;
 
-    void loadTexture();
+    QImage loadImage(QString name);
+    unsigned int loadTexture(QString name);
     void sky(float D = 20);
+
+    void menuItem(double x, double y, double z,
+                  double height, double width,
+                  unsigned int texture);
 };
 
 #endif // _GAMESTATE_H

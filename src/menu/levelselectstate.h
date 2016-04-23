@@ -12,16 +12,17 @@ public:
     void keyPressEvent(QKeyEvent*);
 
 private:
-    Cube* title;
-
-    Cube* playGame;
-    Cube* returnToMenu;
+    MenuItem* playGame;
+    MenuItem* returnToMenu;
 
     enum options
     {
         PlayGame = 0,
         ReturnToMenu = 1
     };
+
+    void loadTextures();
+    unsigned int textures[4];
 };
 
 #endif // _LEVELSELECTSTATE_H

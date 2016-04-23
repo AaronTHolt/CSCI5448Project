@@ -2,7 +2,7 @@
 
 LevelSelectState::LevelSelectState(QGLWidget* context) : GameState(context)
 {
-    loadTexture();
+    loadTextures();
 
     mouse = false;
 
@@ -12,31 +12,42 @@ LevelSelectState::LevelSelectState(QGLWidget* context) : GameState(context)
     ph = 0;
     th = 0;
 
-    title = new Cube(0.0, 2.1, 0.0,
-                     2.0, 0.5, 0.1);
+    title = new MenuItem();
+    title ->setPosition(0.0, 2.1, 0.0);
+    title ->setDimension(5.0, 1.2);
+    title->setTexture(textures[0]);
 
-    playGame = new Cube(0.0, 0.9, 0.0,
-                        1.2, 0.3, 0.1);
+    playGame = new MenuItem();
+    playGame ->setPosition(0.0, 0.9, 0.0);
+    playGame ->setDimension(2.4, 0.6);
+    playGame->setTexture(textures[1]);
     selectableOptions.append(playGame);
 
-    returnToMenu = new Cube(3.9, -2.5, 0.0,
-                            1.2, 0.3, 0.1);
+    returnToMenu = new MenuItem();
+    returnToMenu ->setPosition(3.9, -2.5, 0.0);
+    returnToMenu ->setDimension(2.4, 0.6);
+    returnToMenu->setTexture(textures[2]);
     selectableOptions.append(returnToMenu);
 
-    selectedOption = PlayGame;
+    highlight = new MenuItem();
+    highlight->setTexture(textures[3]);
 
-    highlightOption(selectedOption);
+    selectedOption = PlayGame;
 }
 
 void LevelSelectState::draw()
 {
     sky();
 
-    title->draw();
+    title->display();
+
+    highlightOption(selectedOption);
+
+    highlight->display();
 
     for(int i = 0; i < selectableOptions.size(); ++i)
     {
-        selectableOptions.at(i)->draw();
+        selectableOptions.at(i)->display();
     }
 }
 
@@ -44,20 +55,16 @@ void LevelSelectState::keyPressEvent(QKeyEvent* event)
 {
     if (event->key() == Qt::Key_Up)
     {
-        restoreOption(selectedOption);
         --selectedOption;
         if (selectedOption <= -1)
         {
             selectedOption = selectableOptions.size() - 1;
         }
-        highlightOption(selectedOption);
     }
     else if (event->key() == Qt::Key_Down)
     {
-        restoreOption(selectedOption);
         ++selectedOption;
         selectedOption = selectedOption % selectableOptions.size();
-        highlightOption(selectedOption);
     }
     else if (event->key() == Qt::Key_Return)
     {
@@ -71,4 +78,13 @@ void LevelSelectState::keyPressEvent(QKeyEvent* event)
             context->setState(context->Welcome);
         }
     }
+}
+
+void LevelSelectState::loadTextures()
+{
+    skyTexture = loadTexture(":/spaceSkybox.bmp");
+    textures[0] = loadTexture(QString(":/level_select.bmp"));
+    textures[1] = loadTexture(QString(":/play_game.bmp"));
+    textures[2] = loadTexture(QString(":/return_to_menu.bmp"));
+    textures[3] = loadTexture(QString(":/highlight.bmp"));
 }

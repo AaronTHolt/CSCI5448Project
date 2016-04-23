@@ -12,14 +12,15 @@ public:
     void keyPressEvent(QKeyEvent*);
 
 private:
-    Cube* title;
-
-    Cube* returnToMenu;
+    MenuItem* returnToMenu;
 
     enum options
     {
         ReturnToMenu = 0
     };
+
+    void loadTextures();
+    unsigned int textures[3];
 };
 
 #endif // _OPTIONSSTATE_H
