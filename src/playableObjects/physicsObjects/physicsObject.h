@@ -21,6 +21,7 @@ class PhysicsObject{
   const Vector3 getForward() const;
   const Vector3 getPosition() const;
   const Vector3 getVelocity() const;
+  const Vector3 getUp() const;
   btRigidBody* getRigidBody();
 
   void setPosition(Vector3& vec);

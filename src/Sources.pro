@@ -31,6 +31,8 @@ HEADERS += util/invalidOperationException.h
 SOURCES += util/invalidOperationException.cpp
 HEADERS += util/vector3.h
 SOURCES += util/vector3.cpp
+HEADERS += util/gameObjectType.h
+SOURCES += util/gameObjectType.cpp
 
 # Shapes
 HEADERS += playableObjects/gameObjects/shapes/cube.h
@@ -39,7 +41,6 @@ HEADERS += playableObjects/gameObjects/shapes/GLDebugDrawer.h
 SOURCES += playableObjects/gameObjects/shapes/GLDebugDrawer.cpp
 
 # Game Objects
-HEADERS += playableObjects/gameObjects/gameObjectType.h
 HEADERS += playableObjects/gameObjects/gameObject.h
 SOURCES += playableObjects/gameObjects/gameObject.cpp
 HEADERS += playableObjects/gameObjects/world.h

@@ -25,6 +25,7 @@ Asteroid::Asteroid(Vector3 p, AsteroidSize size) : GameObject()
     try
     {
         asteroid = new WaveOBJ("suzanne.obj",":/");
+        asteroid->scale(radius);
     }
     catch (QString err)
     {

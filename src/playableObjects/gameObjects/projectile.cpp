@@ -13,9 +13,11 @@ Projectile::Projectile(int t, Vector3 p, Vector3 f, Weapon* w) : GameObject()
 
     physicsObject = new ProjectilePhysicsObject(p, f, this);
 
+    type = GameObjectType::Projectile;
+    
     proj = nullptr;
-    type = t;
-    if (type == 0){
+    projectileType = t;
+    if (projectileType == 0){
         proj = new Cube(0,0,0,0.1,0.1,0.1,0);
     }
 	
@@ -30,6 +32,8 @@ Projectile::~Projectile(){
 
 bool Projectile::onCollision(GameObjectType got){
     switch(got){
+        case GameObjectType::Ship:
+            return true;
         default:
             if (w!=nullptr){
                 w->returnBullet();

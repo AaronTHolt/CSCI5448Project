@@ -1,5 +1,6 @@
 #include "world.h"
 #include "asteroid.h"
+#include "gameObjectType.h"
 
 #include <memory>
 #include <iostream>
@@ -59,7 +60,7 @@ double World::getBoundaryDim() const{
 }
 
 void World::deregisterGameObject(GameObject* go){
-  oldObjects.push_back(go);
+  oldObjects.insert(go);
 }
 
 void World::clearOldObjects(){
