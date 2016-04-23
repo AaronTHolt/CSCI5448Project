@@ -20,7 +20,8 @@ CONFIG += c++11 debug
 TEMPLATE = app
 
 BULLETPATH += $$system(ls -d ../bullet*)
-LIBS += -L$$BULLETPATH/bin
+LIBS += -lGL -lGLU -L$$BULLETPATH/bin
+
 include(bulletLibs.pro)
 
 message(The BULLETPATH = ($$BULLETDEPEND))

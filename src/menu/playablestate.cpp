@@ -7,10 +7,10 @@ PlayableState::PlayableState(QGLWidget* context) : GameState(context)
     mouse = false;
 
     aspectRatio = 1;
-    dimension = 15;
     fieldOfView = 55;
-    ph = 0;
-    th = 0;
+
+    cameraDistance = 4.0;
+    cameraHeight = 1.5;
 
     theWorld = World::getWorld();
     if(auto spt = theWorld.lock())
@@ -21,19 +21,21 @@ PlayableState::PlayableState(QGLWidget* context) : GameState(context)
 
 void PlayableState::projection()
 {
-    if(auto spt = theWorld.lock())
-    {
-      float* transform = new float[16];
-      spt->getPlayerShipTransform(transform);
-      glMultMatrixf(transform);
-
-      delete transform;
-    }
+    gluPerspective(fieldOfView, aspectRatio, 0.1, 1000);
 }
 
 void PlayableState::view()
 {
-
+    if(auto spt = theWorld.lock())
+    {
+      shipPosition = spt->getPlayerShip()->getPhysicsObject().getPosition();
+      shipForward = spt->getPlayerShip()->getPhysicsObject().getForward();
+      shipUp = spt->getPlayerShip()->getPhysicsObject().getUp();
+    }
+    calculateCameraPosition();
+    gluLookAt(cameraPosition.getX(), cameraPosition.getY(), cameraPosition.getZ(),
+              shipPosition.getX(), shipPosition.getY(), shipPosition.getZ(),
+              shipUp.getX(), shipUp.getY(), shipUp.getZ());
 }
 
 void PlayableState::draw()
@@ -60,4 +62,21 @@ void PlayableState::keyPressEvent(QKeyEvent* event)
     {
       playerControls.keyPressEvent(event);
     }
+}
+
+void PlayableState::calculateCameraPosition()
+{
+    cameraPosition.setX(shipPosition.getX() + (shipForward.getX() * -cameraDistance) + (shipUp.getX() * cameraHeight));
+    cameraPosition.setY(shipPosition.getY() + (shipForward.getY() * -cameraDistance) + (shipUp.getY() * cameraHeight));
+    cameraPosition.setZ(shipPosition.getZ() + (shipForward.getZ() * -cameraDistance) + (shipUp.getZ() * cameraHeight));
+}
+
+double PlayableState::degreeToRadian(double degree)
+{
+  return degree * M_PI / 180.0;
+}
+
+double PlayableState::radianToDegree(double radian)
+{
+  return radian * 180.0 / M_PI;
 }
