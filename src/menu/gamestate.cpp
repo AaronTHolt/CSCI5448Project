@@ -202,3 +202,7 @@ void GameState::sky(float D)
     glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 }
+
+void GameState::keyReleaseEvent(QKeyEvent* event){
+  event->key();
+}

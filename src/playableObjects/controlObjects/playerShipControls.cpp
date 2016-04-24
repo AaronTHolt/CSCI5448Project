@@ -4,6 +4,14 @@ PlayerShipControls::PlayerShipControls(Ship* s):ShipControls(s){}
 PlayerShipControls::PlayerShipControls():ShipControls(nullptr) {}
 
 void PlayerShipControls::keyPressEvent(QKeyEvent* event){
+  keys.insert(event->key());
+}
+
+void PlayerShipControls::keyReleaseEvent(QKeyEvent* event){
+  keys.erase(event->key());
+}
+
+void PlayerShipControls::doEvents(){
   if(nullptr == ship){
     return;
   }
@@ -15,25 +23,28 @@ void PlayerShipControls::keyPressEvent(QKeyEvent* event){
   const Qt::Key yawLeft = Qt::Key_Left;
   const Qt::Key yawRight = Qt::Key_Right;
 
-  
-  switch(event->key()){
-  case thrust:
-    ship->thrust();
-    break;
-  case fire:
-    ship->fireDefaultWeapon();
-    break;
-  case pitchUp:
-    ship->pitch(true); // Pitch Up
-    break;
-  case pitchDown:
-    ship->pitch(false); // Pitch Down
-    break;
-  case yawLeft:
-    ship->yaw(false);
-    break;
-  case yawRight:
-    ship->yaw(true);
-    break;
+  for(int k : keys){
+    switch(k){
+    case thrust:
+      ship->thrust();
+      break;
+    case fire:
+      ship->fireDefaultWeapon();
+      break;
+    case pitchUp:
+      ship->pitch(true); // Pitch Up
+      break;
+    case pitchDown:
+      ship->pitch(false); // Pitch Down
+      break;
+    case yawLeft:
+      ship->yaw(false);
+      break;
+    case yawRight:
+      ship->yaw(true);
+      break;
+    default:
+      break;
+    }
   }
 }

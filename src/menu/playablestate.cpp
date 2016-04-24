@@ -41,7 +41,7 @@ void PlayableState::view()
 void PlayableState::draw()
 {
     sky(100);
-
+    playerControls.doEvents();
     if (auto spt = theWorld.lock())  // Has to be copied into a shared_ptr before usage
     {
         spt->stepWorld();
@@ -53,15 +53,11 @@ void PlayableState::draw()
 
 void PlayableState::keyPressEvent(QKeyEvent* event)
 {
-    if (event->key() == Qt::Key_Space)
-    {
-        GameStateContext* context = dynamic_cast<GameStateContext*>(gameStateContext);
-        context->setState(context->Welcome);
-    }
-    else
-    {
-      playerControls.keyPressEvent(event);
-    }
+  playerControls.keyPressEvent(event);
+}
+
+void PlayableState::keyReleaseEvent(QKeyEvent* event){
+  playerControls.keyReleaseEvent(event);
 }
 
 void PlayableState::calculateCameraPosition()

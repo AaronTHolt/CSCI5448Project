@@ -17,6 +17,7 @@ public:
     PlayableState(QGLWidget*);
     void draw();
     void keyPressEvent(QKeyEvent*);
+    void keyReleaseEvent(QKeyEvent*);
     void view();
     void projection();
 
@@ -38,6 +39,7 @@ private:
     double cameraHeight;
 
     Vector3 cameraPosition;
+
 };
 
 #endif // _PLAYABLESTATE_H

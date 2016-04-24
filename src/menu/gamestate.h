@@ -19,6 +19,7 @@ public:
     virtual void setAspectRatio(int width, int height);
     virtual void draw() = 0;
     virtual void keyPressEvent(QKeyEvent*) = 0;
+    virtual void keyReleaseEvent(QKeyEvent*);
     virtual void mousePressEvent(QMouseEvent*);
     virtual void mouseReleaseEvent(QMouseEvent*);
     virtual void mouseMoveEvent(QMouseEvent*);

@@ -118,6 +118,11 @@ void GameStateContext::keyPressEvent(QKeyEvent* event)
     states.at(currentGameState)->keyPressEvent(event);
 }
 
+void GameStateContext::keyReleaseEvent(QKeyEvent* event)
+{
+    states.at(currentGameState)->keyReleaseEvent(event);
+}
+
 void GameStateContext::mousePressEvent(QMouseEvent* event)
 {
     states.at(currentGameState)->mousePressEvent(event);
