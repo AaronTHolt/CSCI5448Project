@@ -18,7 +18,7 @@ class Boundary : public GameObject{
   double x;
   double y;
   double z;
-  const double dim = 7;
+  const double dim = 50;
   // Cubes that make up the boundary
   Cube* bound;
   
