@@ -83,7 +83,6 @@ void Ship::getTransformMatrix(float* matrix){
 
 bool Ship::onCollision(GameObjectType got){
   if(GameObjectType::Boundary == got){
-    std::cout << "Warping" << std::endl;
     warp(4.0);
     return false;
   }

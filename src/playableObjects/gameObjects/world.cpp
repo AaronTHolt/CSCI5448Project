@@ -31,7 +31,8 @@ void World::draw() const{
   }
   playerShip.draw();
 
-  std::cout << glGetError() << std::endl;
+  // GL Debugging
+  //std::cout << glGetError() << std::endl;
 }
 
 void World::debugDraw(){

@@ -73,9 +73,10 @@ void PhysicsWorld::nearCallback(btBroadphasePair& collisionPair,
   if(nonNullObjects){
     obj1DoesNormal = obj1->onCollision(obj2->getType());
     obj2DoesNormal = obj2->onCollision(obj1->getType());
-    std::cout << "Both objects "<< obj1->getType() << " and " << obj2->getType() << " found."<< std::endl;
+    // Debugging prints
+    //std::cout << "Both objects "<< obj1->getType() << " and " << obj2->getType() << " found."<< std::endl;
   } else{
-    std::cout << "There is a null object." << std::endl;
+    //std::cout << "There is a null object." << std::endl;
   }
   
   if(!nonNullObjects || (obj1DoesNormal && obj2DoesNormal)){
