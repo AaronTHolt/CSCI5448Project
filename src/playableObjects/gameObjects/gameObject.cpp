@@ -24,27 +24,27 @@ void GameObject::warp(double maxToCenter){
   double toBoundary = boundaryEdge - fabs(pos.getX());
   if(errorBounds > toBoundary){
     if(0 < pos.getX()){
-      pos.setX(-boundaryEdge);
+      pos.setX(-boundaryEdge+1);
     }else{
-      pos.setX(boundaryEdge);
+      pos.setX(boundaryEdge-1);
     }
   }
   
   toBoundary = boundaryEdge - fabs(pos.getY());
   if(errorBounds > toBoundary){
     if(0 < pos.getY()){
-      pos.setY(-boundaryEdge);
+      pos.setY(-boundaryEdge+1);
     }else{
-      pos.setY(boundaryEdge);
+      pos.setY(boundaryEdge-1);
     }
   }
   
   toBoundary = boundaryEdge - fabs(pos.getZ());
   if(errorBounds > toBoundary){
     if(0 < pos.getZ()){
-      pos.setZ(-boundaryEdge);
+      pos.setZ(-boundaryEdge+1);
     }else{
-      pos.setZ(boundaryEdge);
+      pos.setZ(boundaryEdge-1);
     }
   }
 
