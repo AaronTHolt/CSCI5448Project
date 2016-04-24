@@ -4,14 +4,14 @@
 #include <iostream>
 
 
-Projectile::Projectile(int t, Vector3 p, Vector3 f, Weapon* w) : GameObject()
+Projectile::Projectile(int t, const Vector3& p, const Vector3& f, const Vector3& v, Weapon* w) : GameObject()
 {
     this->w = w;
     Vector3 tempf = 2.2*f;
-    p = p + tempf;
-    f = 7*f;
+    Vector3 pos = p + tempf;
+    Vector3 forward = 7*f;
 
-    physicsObject = new ProjectilePhysicsObject(p, f, this);
+    physicsObject = new ProjectilePhysicsObject(pos, forward, v, this);
 
     type = GameObjectType::Projectile;
     

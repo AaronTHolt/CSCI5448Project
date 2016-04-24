@@ -19,13 +19,13 @@ void BasicWeapon::returnBullet(){
     numFired--;
 }
 
-void BasicWeapon::fire(Vector3 p, Vector3 f){
+void BasicWeapon::fire(const Vector3& p, const Vector3& f, const Vector3& v){
 
     if (numFired >= bulletCount){
         return;
     }
 
-    Projectile *proj = new Projectile(0, p, f, this);
+    Projectile *proj = new Projectile(0, p, f, v, this);
 
     std::weak_ptr<World> theWorld;
     theWorld = World::getWorld();

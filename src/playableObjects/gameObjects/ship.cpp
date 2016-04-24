@@ -54,7 +54,8 @@ void Ship::yaw(bool yawRight){
 void Ship::fireDefaultWeapon(){
     const Vector3 tempPosition = physicsObject->getPosition();
     const Vector3 tempForward = physicsObject->getForward();
-    basicWeapon->fire(tempPosition,tempForward);
+    const Vector3 tempVelocity = physicsObject->getVelocity();
+    basicWeapon->fire(tempPosition,tempForward, tempVelocity);
 }
 
 // void Ship::fireAuxiliaryWeapon(){

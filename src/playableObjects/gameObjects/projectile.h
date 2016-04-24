@@ -16,7 +16,7 @@ class Projectile: public GameObject{
         Weapon* w;
         
     public:
-	Projectile(int t, Vector3 p, Vector3 f, Weapon* w = nullptr);
+	Projectile(int t, const Vector3& p, const Vector3& f, const Vector3& v, Weapon* w = nullptr);
 	~Projectile();
 	bool onCollision(GameObjectType got);
         void draw() const;

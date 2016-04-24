@@ -6,13 +6,15 @@
 
 class ProjectilePhysicsObject : public PhysicsObject{
     public:
-        ProjectilePhysicsObject(const Vector3& position, const Vector3& velocity, GameObject* go);
+  ProjectilePhysicsObject(const Vector3& position, const Vector3& forward, const Vector3& velocity, GameObject* go);
         ~ProjectilePhysicsObject();
 
         void applyForce();
         void applyRotationPitch(bool pitchUp);
         void applyRotationYaw(bool yawRight);
-  
+
+ private:
+	const unsigned int velocity = 10;
 };
 
 #endif

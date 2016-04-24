@@ -6,7 +6,7 @@
 class Weapon{
 	public:
 		virtual ~Weapon() = 0;
-		virtual void fire(Vector3 p, Vector3 f) = 0;
+		virtual void fire(const Vector3& p, const Vector3& f, const Vector3& v) = 0;
         virtual void returnBullet();
 
 };
