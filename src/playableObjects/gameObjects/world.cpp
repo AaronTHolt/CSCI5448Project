@@ -94,7 +94,9 @@ World::World():playerShip(){
 
   physicsWorld.registerGameObject(&playerShip);
   
-  this->registerGameObject(new Asteroid(Vector3(2,2,2)));
+  this->registerGameObject(new Asteroid(Vector3(20,20,20)));
+  this->registerGameObject(new Asteroid(Vector3(35,-20,1)));
+  this->registerGameObject(new Asteroid(Vector3(-20,-20,-20)));
 
 
 }
