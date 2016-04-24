@@ -32,6 +32,7 @@ Projectile::~Projectile(){
 
 bool Projectile::onCollision(GameObjectType got){
     switch(got){
+        case GameObjectType::Projectile:
         case GameObjectType::Ship:
             return true;
         default:

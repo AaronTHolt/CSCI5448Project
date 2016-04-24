@@ -9,7 +9,7 @@
 
 class BasicWeapon: public Weapon{
 	private:
-		const int bulletCount = 3;
+        const int bulletCount = 9;
         int numFired = 0;
 
 	public:
