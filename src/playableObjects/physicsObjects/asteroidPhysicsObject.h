@@ -15,7 +15,7 @@ class AsteroidPhysicsObject : public PhysicsObject{
   void applyRotationYaw(bool yawRight);
 
  private:
-  const unsigned int force = 20;
+  const unsigned int force = 5;
   btVector3 getRandomVector();
 
   std::mt19937 generator;
