@@ -11,10 +11,10 @@ Asteroid::Asteroid(Vector3 p, AsteroidSize size) : GameObject()
             radius = 0.5;
             break;
         case AsteroidSize::Medium:
-            radius = 1.0;
+            radius = 2.5;
             break;
         case AsteroidSize::Large:
-            radius = 1.5;
+            radius = 5;
             break;
     }
 
